@@ -8,14 +8,14 @@ The repo is broken into 2 sections, implementations and exercises.
 All algorithms and exercises are written in C. There is no psuedo-code here.
 
 ## How to run
-```
+```bash
 # generate all the implemetation exe's
 make
 ```
 
 Sorting algorithms require data to be passed in via stdin. The `gensort.exe` program can be used to generate random data to sort. 
 
-```
+```bash
 #     max random val
 #                   |
 # n data points     |
