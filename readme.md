@@ -1,12 +1,9 @@
 # Algorithms
-This is my workthrough of the Introduction to Algorithms book.
-
-## Repo structure
-The repo is broken into 2 sections, implementations and exercises.
+This is a monorepo containing my workthrough of the Introduction to Algorithms book excersizes and main algorithms.
 
 ## Caveats
 - All algorithms and exercises are written in C. There is no psuedo-code here.
-- The makefile generates `.exe` files because they are easier to track in `.gitignore`.
+- The makefile generates `.exe` file extensions because they are easier to track in `.gitignore`.
 
 ## How to run
 ```bash
