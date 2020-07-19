@@ -5,7 +5,8 @@ This is my workthrough of the Introduction to Algorithms book.
 The repo is broken into 2 sections, implementations and exercises.
 
 ## Caveats
-All algorithms and exercises are written in C. There is no psuedo-code here.
+- All algorithms and exercises are written in C. There is no psuedo-code here.
+- The makefile generates `.exe` files because they are easier to track in `.gitignore`.
 
 ## How to run
 ```bash
