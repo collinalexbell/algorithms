@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void sort(int *keys, int len) {
 	int i, j, val;
@@ -11,11 +12,13 @@ void sort(int *keys, int len) {
 	}
 }
 
-int main() {
+int main(int argc, char **argv) {
 	int i, len;
-	int keys[100];
+	if(argc > 1) len = atoi(argv[1]);
+	else len = 100;
+	int keys[len];
 
-	for(i = 0; i < 100; i++) {
+	for(i = 0; i < len; i++) {
 		if(scanf("%d", &keys[i]) == EOF) break;
 	}
 	len = i;
