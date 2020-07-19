@@ -7,6 +7,22 @@ The repo is broken into 2 sections, implementations and exercises.
 ## Caveats
 All algorithms and exercises are written in C. There is no psuedo-code here.
 
+## How to run
+```
+# generate all the implemetation exe's
+make
+```
+
+Sorting algorithms require data to be passed in via stdin. The `gensort.exe` program can be used to generate random data to sort. 
+
+```
+#     max random val
+#                   |
+# n data points     |
+#              |    |
+gensort.exe    50, 100 | insertionsort.exe
+```
+
 # 2.1
 
 ## 2.1-1

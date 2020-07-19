@@ -1,4 +1,7 @@
-all: insertionSort insertionSortReverse
+all: gensort insertionSort insertionSortReverse
+
+gensort: gensort.c
+	gcc gensort.c -o gensort.exe
 
 insertionSort: insertionSort.c
 	gcc insertionSort.c -o insertionSort.exe
