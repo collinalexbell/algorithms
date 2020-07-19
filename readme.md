@@ -14,11 +14,12 @@ make
 Sorting algorithms require data to be passed in via stdin. The `gensort.exe` program can be used to generate random data to sort. 
 
 ```bash
-#     max random val
-#                   |
-#  n data points    |
-#               |   |
-./gensort.exe   50  100  |   ./insertionSort.exe
+#                           data points (defaults to 100) 
+#     max random val                                     |
+#                   |                                    |
+#  n data points    |                                    | 
+#               |   |                                    |
+./gensort.exe   50  100  |        ./insertionSort.exe  50
 ```
 
 # 2.1
