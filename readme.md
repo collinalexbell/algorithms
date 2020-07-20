@@ -1,5 +1,5 @@
 # Algorithms
-This is a monorepo containing my workthrough of the Introduction to Algorithms book excersizes and main algorithms.
+This is a monorepo containing my workthrough of the Introduction to Algorithms book excercises and main algorithms.
 
 ## Caveats
 - All algorithms and exercises are written in C. There is no psuedo-code here.
