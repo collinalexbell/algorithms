@@ -81,7 +81,7 @@ Write pseudocode for __linear search__, wich scans through the sequence, looking
 
 ### Answer
 I wrote real code.
-[linear_search.c]()
+[linear_search.c](./linear_search.c)
 
 ```C
 int linear_search(int *A, int v, int len) {
