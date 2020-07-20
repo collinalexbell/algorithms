@@ -83,6 +83,18 @@ Write pseudocode for __linear search__, wich scans through the sequence, looking
 I wrote real code.
 [linear_search.c]()
 
+```C
+int linear_search(int *A, int v, int len) {
+  int i;
+  for(i = 0; i < len; i++) {
+    if(A[i] == v) {
+      return i;
+    }
+  }
+  return -1;
+}
+```
+
 ## 2.1-4
 
 ### Question
