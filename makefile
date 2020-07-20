@@ -1,4 +1,4 @@
-all: gensort insertionSort insertionSortReverse linear_search
+all: binary_addition gensort insertionSort insertionSortReverse linear_search
 
 gensort: gensort.c
 	gcc gensort.c -o gensort.exe
@@ -11,6 +11,9 @@ insertionSortReverse: insertionSortReverse.c
 
 linear_search: linear_search.c
 	gcc linear_search.c -o linear_search.exe
+
+binary_addition: linear_search.c
+	gcc binary_addition.c -o binary_addition.exe
 
 clean: 
 	rm *.exe

@@ -107,13 +107,15 @@ __Input:__ 2 _n_ bit arrays A = {a1, a2,...., an}, B = {b1, b2,....,bn}
 __Output:__ An _n+1_ bit array C = {c1, c2,...., c(n+1)} that represents the sum of A & B
 
 
-```
-SUM_BITS(A, B)
-	C = Array[A.length + 1]
-	carry = 0
-	for i = 0 until A.length
-		C[i] = (A[i] + B[i] + carry) % 2
-		carry = (A[i] + B[i] + carry) / 2
-	return C
+```C
+void binary_addition(int *a, int *b, int *c, int len) {
+        int i, sum, carry;
+        carry = 0;
+        for(i = len-1; i >= 0; i--) {
+                sum = a[i] + b[i] + carry;
+                c[i] = sum % 2;
+                carry = sum / 2;
+        }
+}
 ```
 
