@@ -80,13 +80,8 @@ Write pseudocode for __linear search__, wich scans through the sequence, looking
 
 
 ### Answer
-```
-FIND(A, v)
-	for(i = 0 until A.length)
-		if(A[i] == v) 
-			return v
-	return NIL
-```
+I wrote real code.
+[linear_search.c]()
 
 ## 2.1-4
 
