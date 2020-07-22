@@ -119,3 +119,12 @@ void binary_addition(int *a, int *b, int *c, int len) {
 }
 ```
 
+# 2.2
+
+## 2.2-1
+
+### Question
+Express the function `n^3/1000 - 100n^2 - 100n + 3` in terms of Θ-notation
+
+### Answer
+Θ(n^3)
