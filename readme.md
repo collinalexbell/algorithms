@@ -176,3 +176,14 @@ On average, n/2 items need to be checked in linear search. This is because each 
 Worst case senario, the item is not in the array and therefore n items will have to be considered to know that is the case. 
 
 Θ(n) for both worst and average case because the `1/2` coefficient is dropped in Θ-notation
+
+## 2.2-4
+
+### Question
+
+How can we modify almost any algorithm to have a good best-case running time?
+
+
+### Answer
+
+One can check to see if the problem is already solved.
