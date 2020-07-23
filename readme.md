@@ -171,7 +171,7 @@ Consider linear search again. How many elements of the input sequence need to be
 
 ### Answer
 
-On average, n/2 items needed to be checked in linear search. This is because each item has a 1/n chance of the item. By the first n/2th item, there will be a 50% chance the item will have been found and the probability distribution is symetrical about the n/2 mark. Therefore, n/2 items will be checked on average.
+On average, n/2 items need to be checked in linear search. This is because each item has a 1/n chance of being the needle item. By the consideration of the n/2th item, there will be a 50% chance that the needle item will have already been found. The probability distribution is symetrical about the n/2 mark. Therefore, n/2 items will be checked on average.
 
 Worst case senario, the item is not in the array and therefore n items will have to be considered to know that is the case. 
 
