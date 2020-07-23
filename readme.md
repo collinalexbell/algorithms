@@ -163,3 +163,16 @@ The loop invariant for the second loop is that min is the index of the smallest 
 The second part of the first loop invariant ensures that all keys[0:len-1] are less than the last key and therefore all keys are sorted.
 
 The best case and worst case are Θ(n^2). Even in the best case, the algorithm doesn't know that `i == min` ahead of time, so the second loop will still run an average of n/2-1 times.
+
+## 2.2-3
+
+### Question
+Consider linear search again. How many elements of the input sequence need to be checked on the average, assuming that the element being searched for is equally likely to be any element in the array? How about in the worst case? What are the average-case and worst-case running times of linear search in Θ-notation? Justify your answers
+
+### Answer
+
+On average, n/2 items needed to be checked in linear search. This is because each item has a 1/n chance of the item. By the first n/2th item, there will be a 50% chance the item will have been found and the probability distribution is symetrical about the n/2 mark. Therefore, n/2 items will be checked on average.
+
+Worst case senario, the item is not in the array and therefore n items will have to be considered to know that is the case. 
+
+Θ(n) for both worst and average case because the `1/2` coefficient is dropped in Θ-notation
