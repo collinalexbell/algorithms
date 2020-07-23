@@ -135,7 +135,7 @@ Express the function `n^3/1000 - 100n^2 - 100n + 3` in terms of Θ-notation
 Consider sorting n numbers stored in array A by first finding the smallest element of A and exchanging it with the element in A[1]. The find the second smallest element of A, and exchange it with A[2]. Continue in this manner for the first n-1 elements of A. Write (pseudo) code for this algorithim, wich is known as __selection sort__. What loop invariant does this algorithm maintain? Why does it need to run for only the first n-1 elements rather than for all n elements? Give the best-case and worst-case running times of selection sort in Θ-notation.
 
 ### Answer
-```
+```C
 void selection_sort(int *keys, int len) {
   int i, j, min, tmp;
   for(i = 0; i < len-1; i++){
