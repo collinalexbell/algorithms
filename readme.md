@@ -19,7 +19,7 @@ Sorting algorithms require data to be passed in via stdin. The `gensort.exe` pro
 #                   |                                  |
 #  n data points    |                                  | 
 #               |   |                                  |
-./gensort.exe   50  100  |        ./insertionSort.exe  50
+./gensort.exe   50  100  |        ./insertion_sort.exe  50
 ```
 
 # 2.1
@@ -59,7 +59,7 @@ Using Figure 2.2 as a model, illustrate the operation of INSERTION-SORT on the a
 Rewrite the INSERTION-SORT procedure to sort into nonincreasing instead of non-decreasing order
 
 ### Answer
-[insertionSortReverse.c](../implementations/insertionSortReverse.c)
+[insertion_sort_reverse.c](./insertion_sort_reverse.c)
 ```
 7c7
 <     for (j = i-1; j >= 0 && val < keys[j]; j--) {
