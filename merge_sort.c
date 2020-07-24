@@ -37,9 +37,17 @@ void merge(int *A, int p, int q, int r) {
 	}
 }
 
+void merge_sort(int *A, int p, int r) {
+	if(r-p > 1) {
+		int q = (r+p)/2;
+		merge_sort(A, p, q);
+		merge_sort(A, q, r);
+		merge(A, p, q, r);
+	}
+}
+
 int main(int argc, char **argv) {
 	int i, len;
-	/*
 	if(argc > 1) len = atoi(argv[1]);
 	else len = 100;
 	int keys[len];
@@ -50,17 +58,10 @@ int main(int argc, char **argv) {
 	len = i;
 	printf("\n");
 
-	sort(keys, len);
+	merge_sort(keys, 0, len);
 	for(i = 0; i < len; i++) {
 		printf("%d, ", keys[i]);
 	}
 	printf("\n");
-	*/
 
-	int A[10] = {1,3,5,7,2,3,4,7,9,11};
-	merge(A, 0, 4, 10);
-	for(i = 0; i < 10; i++) {
-		printf("%d, ", A[i]);
-	}
-	printf("\n");
 }
