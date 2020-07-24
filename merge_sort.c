@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * A[p:q] and A[q:r] are the 2 arrays to be merged .
+ * The min index is inclusive and the max index is exclusive.
+ * This is unlike the book's psuedo code where the max indicies are inclusive.
+ */
 void merge(int *A, int p, int q, int r) {
 	int i, lInd, rInd;
 

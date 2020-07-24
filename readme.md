@@ -3,6 +3,7 @@ This is a monorepo containing my workthrough of the Introduction to Algorithms b
 
 ## Caveats
 - All algorithms and exercises are written in C. There is no psuedo-code here.
+- The book uses notation `A[a .... d]` where a and d are both inclusive indicies. My code/notes uses `A[a:d]` notation where the min index is inclusive and the max index is exclusive.
 - The makefile generates `.exe` file extensions because they are easier to track in `.gitignore`.
 
 ## How to run
