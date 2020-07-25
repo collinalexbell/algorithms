@@ -244,3 +244,30 @@ void merge(int *A, int p, int q, int r) {
         }
 }
 ```
+
+## 2.3-3
+
+### Question
+
+Use mathematical induction to show that when n is an exact power of 2, the solution of the recurrence
+
+`T(n) = {2 if n=2, 2T(n/2)+n if n = 2^k, for k > 1}`
+
+is `T(n) = nlgn`
+
+### Answer
+```
+Basis: T(2) = 2 = 2lg2 = 2*1
+Induction: assume recurrance T(2^k) = (2^k)lg(2^k)
+	consider T(2^(k+1)):
+	T(k+1) =	2T((2^(k+1))/2)+2^(k+1): substitution in original eq
+	T(k+1) =	2T(2^k)+2^(k+1): fraction reduction
+	T(k+1) =	2((2^k)lg(2^k))+2^(k+1): substitute induction assumption
+	T(k+1) = 2^(k+1)lg(2^k)+2^(k+1): exponent rules
+	T(k+1) = 2^(k+1)k+2^(k+1): log rules
+	T(k+1) = 2^(k+1)*(k+1): exponent rules
+	T(k+1) = 2^(k+1)*lg(2^(k+1)): log definition
+	if n=2^(k+1) then T(n) n*lg(n)
+	therefore recurrance holds for k+1 when it is assumed true for k
+therefore the reccurance is proved true by induction
+```
