@@ -1,5 +1,5 @@
 CC = gcc -g
-all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort
+all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels
 
 gensort: gensort.c
 	$(CC) gensort.c -o gensort.exe
@@ -21,6 +21,9 @@ selection_sort: selection_sort.c
 
 merge_sort: merge_sort.c
 	$(CC) merge_sort.c -o merge_sort.exe
+
+merge_sort_no_sentinels: merge_sort_no_sentinels.c
+	$(CC) merge_sort_no_sentinels.c -o merge_sort_no_sentinels.exe
 
 clean: 
 	rm *.exe

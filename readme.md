@@ -206,3 +206,41 @@ Using Figure 2.4 as a model, illustrate the operation of merge sort on the array
    ^           ^           ^          ^ 
 {3}  {41}  {52}  {26}  {38}  {57}  {9}  {49}
 ```
+
+## 2.3-2
+
+### Question
+
+Rewrite the `merge` procedure so that it does not use sentinels, instead stopping once either array `L` orl `R` has had all its elements copied back to A and then copying the remainder of the other array back into A
+
+### Answer
+```C
+void merge(int *A, int p, int q, int r) {
+        int i, lInd, rInd;
+
+        int lenLeft = q - p;
+        int left[lenLeft];
+        for(i = 0; i < lenLeft; i++) {
+                left[i] = A[p + i];
+        }
+
+        int lenRight = r - q;
+        int right[lenRight];
+        for(i = 0; i < lenRight; i++) {
+                right[i] = A[q + i];
+        }
+
+        lInd = 0;
+        rInd = 0;
+
+        for(i = 0; i < lenLeft + lenRight; i++) {
+                if(lInd < lenLeft && (rInd >= lenRight || left[lInd] <= right[rInd])) {
+                        A[p + i] = left[lInd];
+                        lInd++;
+                } else {
+                        A[p + i] = right[rInd];
+                        rInd++;
+                }
+        }
+}
+```
