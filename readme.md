@@ -211,7 +211,7 @@ Using Figure 2.4 as a model, illustrate the operation of merge sort on the array
 
 ### Question
 
-Rewrite the `merge` procedure so that it does not use sentinels, instead stopping once either array `L` orl `R` has had all its elements copied back to A and then copying the remainder of the other array back into A
+Rewrite the `merge` procedure so that it does not use sentinels, instead stopping once either array `L` or `R` has had all its elements copied back to `A` and then copying the remainder of the other array back into `A`
 
 ### Answer
 ```C
