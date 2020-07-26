@@ -318,3 +318,30 @@ Observe that the while loop of lines 5-7 of the insertion_sort procudure in Sect
 ### Answer
 
 No. Insertion sort also shifts the elements to the right when scanning the array to find the insertion point. The element shifting would still need to happen and that process is Θ(n) regardless of how the insertion point is found.
+
+## 2.3-7c7
+
+### Question
+
+Describe a Θ(nlgn)-time algorithm that, given a set `S` of `n` integers and another interger `x`, determines whether or not there exist two elements in `S` whose sum is exactly `x`.
+
+
+### Answer
+
+[sum_in_set.c](./sum_in_set.c)
+```C
+void sum_in_set(int *A, int sum, int len, int *rv) {
+        int i, needle;
+        merge_sort(A, 0, len); // O(nlgn)
+        for(i = 0; i < len; i++) { // O(n) (loop without contents)
+                rv[0] = i;
+                needle = sum - A[i];
+                rv[1] = binary_search(A, needle, 0, len); // O(lgn)
+                if(rv[1] > -1) return;
+        } // O(nln) (loop with contents)
+        rv[0] = -1;
+        rv[1] = -1;
+				
+				// O(nlgn) + O(nlgn) = O(nlgn)
+}
+```
