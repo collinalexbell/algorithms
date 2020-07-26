@@ -289,3 +289,22 @@ We can express insertion sort as a recursive procedure as follows. In order to s
 ### Question
 
 Referring back to the searching problem (see Excercise 2.1-3), observe that if the sequence A is sorted, we can check the midpoint of the sequence against v and eliminate half of the sequence from further consideration. The __binary search__ algorithm repeats this procedure, halfing the size of the remaining portion of the sequence each time. Write (pseudo) code , either iterative or recursive, for binary search. Argue that the worlst-case running time of binary search is Θ(nlgn)
+
+### Answer
+
+[binary_search.c](./binary_search.c)
+
+```C
+int binary_search(int *A, int needle, int lower, int upper) {
+        // base
+        if((upper - lower) <= 1) {
+                if(A[lower] == needle) return lower;
+                else return -1;
+        }
+
+        // recurse
+        int pivot = (upper-lower)/2 + lower;
+        if(needle < A[pivot]) return binary_search(A, needle, lower, pivot);
+        else return binary_search(A, needle, pivot, upper);
+}
+```
