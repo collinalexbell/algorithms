@@ -1,4 +1,5 @@
 # Algorithms
+![drone ci](https://drone.holons.ai/api/badges/kuberlog/algorithms/status.svg "CI")
 This is a monorepo containing my workthrough of the Introduction to Algorithms book excercises and main algorithms.
 
 ## Caveats
