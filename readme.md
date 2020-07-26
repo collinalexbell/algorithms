@@ -273,3 +273,19 @@ Induction: assume recurrance T(2^k) = (2^k)lg(2^k)
 	therefore recurrance holds for k+1 when it is assumed true for k
 therefore the reccurance is proved true by induction
 ```
+
+## 2.3-4
+
+### Question
+
+We can express insertion sort as a recursive procedure as follows. In order to sort `A[1...n]`, we recursively sort `A[1...n-1]` and then insert A[n] into the sorted array `A[1..n-1]`. Write a recurrence for the running time of this recursive version of insertion sort.
+
+### Answer
+
+`T(n) = {T(n-1)+n if n>1; n if n == 1}`
+
+## 2.3-5
+
+### Question
+
+Referring back to the searching problem (see Excercise 2.1-3), observe that if the sequence A is sorted, we can check the midpoint of the sequence against v and eliminate half of the sequence from further consideration. The __binary search__ algorithm repeats this procedure, halfing the size of the remaining portion of the sequence each time. Write (pseudo) code , either iterative or recursive, for binary search. Argue that the worlst-case running time of binary search is Θ(nlgn)

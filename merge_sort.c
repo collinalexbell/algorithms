@@ -60,8 +60,7 @@ int main(int argc, char **argv) {
 
 	merge_sort(keys, 0, len);
 	for(i = 0; i < len; i++) {
-		printf("%d, ", keys[i]);
+		printf("%d ", keys[i]);
 	}
-	printf("\n");
 
 }
