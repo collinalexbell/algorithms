@@ -319,7 +319,7 @@ Observe that the while loop of lines 5-7 of the insertion_sort procudure in Sect
 
 No. Insertion sort also shifts the elements to the right when scanning the array to find the insertion point. The element shifting would still need to happen and that process is Θ(n) regardless of how the insertion point is found.
 
-## 2.3-7c7
+## 2.3-7
 
 ### Question
 
@@ -330,13 +330,13 @@ Describe a Θ(nlgn)-time algorithm that, given a set `S` of `n` integers and ano
 
 [sum_in_set.c](./sum_in_set.c)
 ```C
-void sum_in_set(int *A, int sum, int len, int *rv) {
+void sum_in_set(int *S, int sum, int len, int *rv) {
         int i, needle;
-        merge_sort(A, 0, len); // O(nlgn)
+        merge_sort(S, 0, len); // O(nlgn)
         for(i = 0; i < len; i++) { // O(n) (loop without contents)
                 rv[0] = i;
-                needle = sum - A[i];
-                rv[1] = binary_search(A, needle, 0, len); // O(lgn)
+                needle = sum - S[i];
+                rv[1] = binary_search(S, needle, 0, len); // O(lgn)
                 if(rv[1] > -1) return;
         } // O(nln) (loop with contents)
         rv[0] = -1;

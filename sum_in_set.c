@@ -59,13 +59,13 @@ void merge_sort(int *A, int p, int r) {
 	}
 }
 
-void sum_in_set(int *A, int sum, int len, int *rv) {
+void sum_in_set(int *S, int sum, int len, int *rv) {
 	int i, needle;
-	merge_sort(A, 0, len);
+	merge_sort(S, 0, len);
 	for(i = 0; i < len; i++) {
 		rv[0] = i;
-		needle = sum - A[i];
-		rv[1] = binary_search(A, needle, 0, len);
+		needle = sum - S[i];
+		rv[1] = binary_search(S, needle, 0, len);
 		if(rv[1] > -1) return;
 	}
 	rv[0] = -1;
@@ -79,24 +79,24 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
-	int A[10000];
+	int S[10000];
 
 	v = atoi(argv[1]);
 
 	len = 0;
-	while(len < 10000 && scanf("%d", &A[len]) != EOF) {
+	while(len < 10000 && scanf("%d", &S[len]) != EOF) {
 		len++;
 	}
 
 
 	for(i = 0; i < len; i++) {
-		printf("%d, ", A[i]);
+		printf("%d, ", S[i]);
 	}
 	printf("\n");
 
-	sum_in_set(A, v, len, result);
+	sum_in_set(S, v, len, result);
 
-	printf("\n\nresult: A[%d], A[%d] == (%d, %d)\n", result[0], result[1], A[result[0]], A[result[1]]);
+	printf("\n\nresult: S[%d], S[%d] == (%d, %d)\n", result[0], result[1], S[result[0]], S[result[1]]);
 }
 
 
