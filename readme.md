@@ -308,3 +308,13 @@ int binary_search(int *A, int needle, int lower, int upper) {
         else return binary_search(A, needle, pivot, upper);
 }
 ```
+
+## 2.3-6
+
+### Question
+
+Observe that the while loop of lines 5-7 of the insertion_sort procudure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray A[1..j-1]. Can we use a binary search instead to improve the worst-case running time of insertion sort to Θ(nlgn)?
+
+### Answer
+
+No. Insertion sort also shifts the elements to the right when scanning the array to find the insertion point. The element shifting would still need to happen and that process is Θ(n) regardless of how the insertion point is found.
