@@ -359,4 +359,23 @@ __b.__ Show how to merge the sublists in `Θ(nlg(n/k))` worst case time
 
 __c.__ Given that the modified algorithm runs in `Θ(nk + nlg(n/k))` worst-case time, what is the largest value of k as a function of n for which the modified algorithm has the same running time as standard merge sort, in terms of Θ-notation?
 
-__d.__ How should we choose k in practice?
+__d.__ How should we choose `k` in practice?
+
+
+### Answers
+
+__a.__ 
+```C
+void insertion_sort(int *keys, int len) {
+        int i, j, val;
+        for (i = 1; i < len; i++) {
+                val = keys[i];
+                for (j = i-1; j >= 0 && val < keys[j]; j--) {
+                        keys[j+1] = keys[j];
+                }
+                keys[j+1] = val;
+        }
+} // if len = k, then this runs in k^2
+
+// if insertion_sort is called n/k times, then that is n/k * k^2 = nk. Therefore Θ(nk)
+```
