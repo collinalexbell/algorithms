@@ -367,3 +367,12 @@ __d.__ How should we choose `k` in practice?
 __a.__ 
 Insertion sort on k items runs in Θ(k^2). If insertion_sort is called n/k times, then that is Θ(n/k) * Θ(k^2) = Θ(nk)
 
+__b.__
+It takes Θ(n) to a single level of merge (across all subliests, every item has to be merged into another sublist (and eventually the top level list)). To achieve n/k sublists by recursively dividing collections in half, it takes lg(n/k) levels of recursion. Therfore, to merge all recursions it takes Θ(nlg(n/k)) time.
+
+__c.__ 
+For large enough k's the term `nk` will dominate in Θ(nk + nlg(n/k)). As long as `k(n)` is Θ(lg(n)), then k will be small enough to rival pure mergesort.
+
+
+__d.__
+Make k some constant and titrate `k` using real machine timings. 
