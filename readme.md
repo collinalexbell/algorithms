@@ -375,4 +375,4 @@ For large enough k's the term `nk` will dominate in Θ(nk + nlg(n/k)). As long a
 
 
 __d.__
-Make k some constant and titrate `k` using real machine timings. 
+Make k some constant and titrate `k` using real machine timings for expected input size n. The appropriate value will be bounded by context of expected size n and real hardware.
