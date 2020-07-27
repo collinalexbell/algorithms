@@ -365,7 +365,5 @@ __d.__ How should we choose `k` in practice?
 ### Answers
 
 __a.__ 
-Insertion sort on k items runs in Θ(k^2).
-
-If insertion_sort is called n/k times, then that is Θ(n/k) * Θ(k^2) = Θ(nk)
+Insertion sort on k items runs in Θ(k^2). If insertion_sort is called n/k times, then that is Θ(n/k) * Θ(k^2) = Θ(nk)
 
