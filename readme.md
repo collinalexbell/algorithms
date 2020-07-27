@@ -365,17 +365,6 @@ __d.__ How should we choose `k` in practice?
 ### Answers
 
 __a.__ 
-```C
-void insertion_sort(int *keys, int len) {
-        int i, j, val;
-        for (i = 1; i < len; i++) {
-                val = keys[i];
-                for (j = i-1; j >= 0 && val < keys[j]; j--) {
-                        keys[j+1] = keys[j];
-                }
-                keys[j+1] = val;
-        }
-} // if len = k, then this runs in k^2
+Insertion sort on k items runs in Θ(k^2)
+If insertion_sort is called n/k times, then that is Θ(n/k) * Θ(k^2) = Θ(nk)
 
-// if insertion_sort is called n/k times, then that is n/k * k^2 = nk. Therefore Θ(nk)
-```
