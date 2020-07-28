@@ -348,9 +348,10 @@ void sum_in_set(int *S, int sum, int len, int *rv) {
 
 # Ch 2 Problems
 
-## 2.1
+## 2-1
 
 ### Question
+
 Although merge sort runs in Θ(nlgn) worst-case time and insertion sort runs in Θ(n^2) worst-case time, the constant factors in insertion sort can make it faster in practice for small problem sizes on many machines. Thus, it makes sense to coarsen the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small. Consider a modification to merge sort in which `n/k` sublists of length `k` are sorted using insertion sort and then merged using the standard merging mechanism, where `k` is a value to be termined
 
 __a.__ Show that insertion sort can sort the n/k sublists, each of length k, in `Θ(nk)` worst-case time.
@@ -376,3 +377,52 @@ For large enough k's the term `nk` will dominate in Θ(nk + nlg(n/k)). As long a
 
 __d.__
 Make k some constant and titrate `k` using real machine timings for expected input size n. The appropriate value will be bounded by context of expected size n and real hardware.
+
+## 2-2
+
+### Question
+
+Bubblesort is a popular, but inefficient, sorting algorithm. It works by repeatedly swapping adjacent elements that are out of order.
+
+```
+BUBBLESORT(A)
+1  for i = 1 to A.length - 1
+2    for j = A.length downto i + 1
+3      if A[j] < A[j - 1]
+4        exchange A[j] with A[j - 1]
+```
+ __a.__ Let `A'` denote the output of `BUBBLESORT(A)`. To prove that `BUBBLESORT` is correct, we need to prove that it terminates and that `A'[1] <= A'[2] <= ... <= A'[n]`,
+
+ where `n = A.length`. In order to show that `BUBBLESORT` actually sorts, what else do we need to prove?
+
+ The next two parts will prove inequality (2.3).
+
+ __b.__ State precisely a loop invariant for the `for` loop in lines 2-4, and prove that this loop invariant holds. Your proof should use the structure of the loop invariant proof presented in this chapter.
+
+ __c.__ Using the termination condition of the loop invariant proved in part (b), state a loopi nvariant for the `for` loop in lines 1-4 that will allow you to prove inequality (2.3). Your proof should use the structure of the loop invariant proof presented in this chapter.
+
+ __d.__ What is the worst-case running time of bubblesort? How does it compare to the running time of insertion sort?
+
+
+ ### Answer
+
+ __a.__ We need to prove that A' contains the same elements as A
+
+ __b.__ On each iteration A[j] will be the smallest item of A[j ... A.length].  
+
+ Initialization: At the start of the loop, j is A.length, so A[j ... A.length] is of length 1 and therefore A[j] is the smallest item
+
+ Maintanance: If A[j] is smaller of A[j-1] then the two are echanged, meaning the smallest number is propagated to the left and that number will be A[j] on the next loop
+
+ Termination: When the loop terminates j-1 will be equal to i and so A[i] will be the smallest number of A[i ... A.length]
+
+ __c.__ On each iteration A[1 ... i] will be sorted
+
+ Initialization: At the start of the loop, i = 1 meaning that A[1 ... i] is of length 1 and therefore is sorted
+
+ Maintanance: At the end of each loop j-1 will be equal to i. Since the termination quality of the inner loop is that A[i] will be the smallest number of A[i .. A.length] it will be the case that no number in A[i+1 ... A.length] should come before A[i] in the sorted list A' and therefore the invariant holds.
+
+ Termination: When the loop terminates, `i` will be set to A.length-1, A[1 ... i] will be sorted and A[i] will be the smallest number in A[i ... A. length] due to the maitanance quality. Therefore A[1 ... A.length] will be fully sorted.
+
+ __d.__ The worst case running time of bubblesort is O(n^2). Specifically `(n-1)((n-1)/2)` loop iterations will occur.
+ 
