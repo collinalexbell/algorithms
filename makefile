@@ -1,5 +1,5 @@
 CC = gcc -g
-all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort
+all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule
 
 gensort: gensort.c
 	$(CC) gensort.c -o gensort.exe
@@ -33,6 +33,9 @@ sum_in_set: sum_in_set.c
 
 bubble_sort: bubble_sort.c
 	$(CC) bubble_sort.c -o bubble_sort.exe
+
+horners_rule: horners_rule.c
+	$(CC) horners_rule.c -o horners_rule.exe
 
 clean: 
 	rm *.exe
