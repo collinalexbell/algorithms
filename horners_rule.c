@@ -8,8 +8,20 @@ int horners_rule(int *a, int x, int k, int len) {
 	return 0;
 }
 
+int naive(int *a, int x, int k, int len) {
+	int i;
+	if(k < len) {
+		int xToK = 1;
+		for(i = 0; i < k; i++) {
+			xToK = xToK * x;
+		}
+		return a[k] * xToK + naive(a, x, k+1, len);
+	}
+	return 0;
+}
+
 int main(int argc, char** argv) {
-	int i, x, len, result;
+	int i, x, len, resultHorners, resultNaive;
 
 	int a[100];
 
@@ -32,9 +44,11 @@ int main(int argc, char** argv) {
 	printf("\n");
 
 
-	result = horners_rule(a, x, 0, len);
+	resultHorners = horners_rule(a, x, 0, len);
+	resultNaive = naive(a, x, 0, len);
 
-	printf("\n\nresult: y=%d\n", result);
+	printf("\n\nHorners Rule  result: y=%d\n", resultHorners);
+	printf(    "Naive Compute result: y=%d\n", resultNaive);
 }
 
 

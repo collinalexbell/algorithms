@@ -426,3 +426,87 @@ BUBBLESORT(A)
 
  __d.__ The worst case running time of bubblesort is O(n^2). Specifically `(n-1)((n-1)/2)` loop iterations will occur.
  
+## 2-3) Correctness of Horners Rule
+
+### Question
+
+The following code fragment implements Horner's rule for evaluating a polynomial:
+
+```
+P(x) = Sum(k=0, n)(ak*x^k) 
+		 = a0 + x(a1 + x(a2 + ... + x(a(n-1) + xan) ... ))
+
+```
+
+given the coefficients a0, a1, ... , a(n-1), an and a value for x:
+
+```
+y = 0
+for i = n downto 0
+	y = ai + x * y
+```
+
+__a.__ In terms of Θ-notation, what is the running time of this code fragment for Horner's rule?
+
+__b.__ Write psuedocode to implement the naive polynomial-evaluation algorithm that computes each term of the polynomial from scratch. What is the running time of this algorithm? How does it compare to Horner's rule?
+
+__c.__ Consider the following loop invariant:
+	At the start of each iteration of the __for__ loop of lines 2-3,
+
+	```
+	y = Sum(k=0, n-(1+1))(a(k+i+1)*x^k)
+	```
+Interpret a summation with no terms as equaling 0. Following the structure of the loop invariant proof presented in this chapter, use this loop invariant to show that, at termination:
+
+```
+y = Sum(k=0, n)(ak*x^k)
+```
+
+__d.__ Conclude by arguing that the given code fragment correctly evaluates a polynomial characterized by the coefficients `a0, a1, ... , an`
+
+### Answers
+
+__a.__ 
+```
+int horners_rule(int *a, int x, int k, int len) {
+        if(k < len) {
+                return a[k] + x * horners_rule(a, x, k+1, len);
+        }
+        return 0;
+}
+```
+Θ(n)
+
+__b.__ 
+```
+int naive(int *a, int x, int k, int len) {
+        int i;
+        if(k < len) {
+                int xToK = 1;
+								// Slow exponentiation.Could be improved by bitshfiting.
+                for(i = 0; i < k; i++) {
+                        xToK = xToK * x;
+                }
+                return a[k] * xToK + naive(a, x, k+1, len);
+        }
+        return 0;
+}
+```
+Techincally, this is Θ(n^2), but a fast exponentiation by squaring would give us Θ(nlgn). It is still slower than Horners either way.
+
+__c.__ 
+
+Base case: At the start of the loop, `y=0`. Since a summation of no terms = 0, the invariant holds
+
+Induction: Assume the invariant holds for some `i`. 
+
+```
+y = ai + x * Sum(k=0, n-(i+1))(a(k+i+1))x^k 
+	= ai + x * Sum(k=1,n-1)(a(k+i)*x^(k-1)
+  = Sum(k=0, n-1)(a(k+i)*x^k))
+```
+At termination, i=0 so the sum at i=0 is the desired result by definition of polynomial
+
+__d.__ The definition of polynomial is equal to the termination of the loop (i=0), therefore the algorithm is correct
+
+
