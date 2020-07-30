@@ -510,3 +510,72 @@ At termination, i=0 so the sum at i=0 is the desired result by definition of pol
 __d.__ The definition of polynomial is equal to the termination of the loop (i=0), therefore the algorithm is correct
 
 
+## 2-4 Inversions
+
+### Question 
+Let `A[1..n]` be an array of n distinc numbers. If `i < j` and `A[i] > A[j]`, then the pair `(i, j)` is called an inversion of Assume
+
+__a.__ List the five inversions of the array <2, 3, 8, 6, 1>
+
+__b.__ What array with elements from the set {1,2,...,n} has the most inversions? How many does it have?
+
+__c.__ What is the relationship between the running time of insertion sort and the number of inversions in the input array? Justify your answers
+
+__d.__ Give an algorithm that determinse the number of inversions in any permutation on n elements in O(nlgn) worst-case time. (Hint: Modify merge sort)
+
+### Answers
+
+__a.__ (2,1), (3,1), (8,1), (8, 6), (6, 1)
+
+__b.__ [n, n-1, ... 1]. It has n(n-1)/2 inversions
+
+__c.__ Every inversion requires a swap in the insertion sort algorithm, so the running time of insertion sort in terms of constant time operations is the number of inversions the array has.
+
+__d.__
+[inversions.c](./inversions.c)
+```C
+int mergeAndCount(int *A, int p, int q, int r) {
+        int sum = 0;
+        int i, lInd, rInd;
+
+        int lenLeft = q - p;
+        int left[lenLeft + 1];
+        for(i = 0; i < lenLeft; i++) {
+                left[i] = A[p + i];
+        }
+        left[lenLeft] = 2147483647;
+
+        int lenRight = r - q;
+        int right[lenRight + 1];
+        for(i = 0; i < lenRight; i++) {
+                right[i] = A[q + i];
+        }
+        right[lenRight] = 2147483647;
+
+        lInd = 0;
+        rInd = 0;
+
+        for(i = 0; i < lenLeft + lenRight; i++) {
+                if(left[lInd] <= right[rInd]) {
+                        A[p + i] = left[lInd];
+                        lInd++;
+                } else {
+                        A[p + i] = right[rInd];
+                        rInd++;
+                        sum = sum + (lenLeft - lInd);
+                }
+        }
+        return sum;
+}
+
+int inversions(int *A, int p, int r) {
+        int sum = 0;
+        if(r-p > 1) {
+                int q = (r+p)/2;
+                sum = sum + inversions(A, p, q);
+                sum = sum + inversions(A, q, r);
+                sum = sum + mergeAndCount(A, p, q, r);
+        }
+        return sum;
+}
+```
