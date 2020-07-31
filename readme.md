@@ -579,3 +579,28 @@ int inversions(int *A, int p, int r) {
         return sum;
 }
 ```
+
+## 3.1 Exercises
+
+### 3.1-1
+
+#### Question
+Let f(n) and g(n) be asymptotically nonnegative functions. Using the basic definition of θ-notation, prove that `max(f(n), g(n)) = θ(f(n) + g(n))`
+
+#### Answer
+By definition, `max(f(n), g(n) = θ(f(n) + g(n))` means `c1*(f(n)+g(n)) <= max(f(n), g(n)) <= c2*f(n)+g(n)` for some c1, c2, and all n > n0.
+
+This inequality breaks down to 
+
+```
+c1*(f(n)+g(n)) <= f(n) <= c2*f(n)+g(n) if f(n) > g(n) 
+and
+c1*(f(n)+g(n)) <= g(n) <= c2*f(n)+g(n) if g(n) > f(n) 
+
+for all n > n0
+```
+
+
+
+
+
