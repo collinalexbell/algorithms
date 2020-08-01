@@ -596,6 +596,35 @@ Choosing c1 = 0.5 and c2 = 100, this becomes
 
 Since max(f(n), g(n)) + max(f(n), g(n)) will select the max function twice, it neccisarily has to be <= to max(f(n), g(n)) and therefore the inequality holds and `max(f(n), g(n)) = θ(f(n) + g(n))` 
 
+I feel bad after looking up the answer. I won't do that again
+
+### 3.1-2
+
+#### Question
+Show that for any real constants `a` and `b`, where `b > 0`, `(n + a)^b = θ(n^b)`
+
+#### Answer
+
+In order for `(n + a)^b = θ(n^b)` to be true, the following inequality must hold for some constant c1, c2, for all n > some n0, and for all a and all b > 0
+
+`c1 * n^b <= (n + a)^b <= c2 * n^b`
+
+Working on the left side first
+
+```
+c1 * n^b <= (n + a)^b
+c1 * n^b <= n^b + a^b
+c1 <= 1 + a^b/n^b
+```
+
+As n approaches infinity, the second addition term n the right hand side tends to 0 so c becomes a constant for large n. If one substitues n0 for n in the equation, then a correct constant c1 could be chosen to satisfy the inequality
 
 
+Now working on the right side
+```
+(n + a)^b <= c2 * n^b
+n^b + a^b <= c2 * n^b
+1 + a^b/n^b <= c2
+```
 
+Again, c2 can be a constant because a^b/n^b trends to 0 as n approaches infinity. A proper c2 can be chosen by substituting n0 for n.
