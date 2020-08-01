@@ -636,3 +636,27 @@ Explain why the statement, "The running time of algorithm A is at least O(n^2), 
 
 #### Answer
 This statement says: `A <= N where N >= c * n^2 for some c and all n > n0`. The `>=` part comes from the "at least" terminology. N does not have an upper bound, so therefore using N as an upper bound is as meaningless as using infinity as an upper bound.
+
+After I answered the question I checked my work by looking up the answer on the same rutgers site I cheated on 3.1-1 with. Ironically, the answer on the site was wrong. I'm not even going to use it to check my work.
+
+### 3.1-4
+
+#### Question
+
+Is `2^(n+1) = O(2^n)`? Is `2^2n = O(2^n)`?
+
+#### Answer
+1) Yes, because choosing `c` to be 2 means 
+```
+2^(n+1) = c*2^n
+2^(n+1) = 2*2^n
+2^(n+1) = 2^(n+1)
+```
+
+2) No 
+```
+2^2n <= c * 2^n
+2^n * 2^n <= c * 2^n
+c >= 2^n
+```
+c is a function of n and therefore can not be constant
