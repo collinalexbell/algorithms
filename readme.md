@@ -590,16 +590,11 @@ Let f(n) and g(n) be asymptotically nonnegative functions. Using the basic defin
 #### Answer
 By definition, `max(f(n), g(n) = θ(f(n) + g(n))` means `c1*(f(n)+g(n)) <= max(f(n), g(n)) <= c2*f(n)+g(n)` for some c1, c2, and all n > n0.
 
-This inequality breaks down to 
+Choosing c1 = 0.5 and c2 = 100, this becomes
 
-```
-c1*(f(n)+g(n)) <= f(n) <= c2*f(n)+g(n) if f(n) > g(n) 
-and
-c1*(f(n)+g(n)) <= g(n) <= c2*f(n)+g(n) if g(n) > f(n) 
+0.5 * (f(n) + g(n)) <= 0.5(max(f(n), g(n)) + max(f(n), g(n))) = max(f(n), g(n)) <= max(f(n), g(n)) + min(f(n), g(n)) = f(n) + g(n)
 
-for all n > n0
-```
-
+Since max(f(n), g(n)) + max(f(n), g(n)) will select the max function twice, it neccisarily has to be <= to max(f(n), g(n)) and therefore the inequality holds and `max(f(n), g(n)) = θ(f(n) + g(n))` 
 
 
 
