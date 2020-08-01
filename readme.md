@@ -628,3 +628,11 @@ n^b + a^b <= c2 * n^b
 ```
 
 Again, c2 can be a constant because a^b/n^b trends to 0 as n approaches infinity. A proper c2 can be chosen by substituting n0 for n.
+
+### 3.1-3
+
+#### Question
+Explain why the statement, "The running time of algorithm A is at least O(n^2), " is meaningless.
+
+#### Answer
+This statement says: `A <= N where N >= c * n^2 for some c and all n > n0`. The `>=` part comes from the "at least" terminology. N does not have an upper bound, so therefore using N as an upper bound is as meaningless as using infinity as an upper bound.
