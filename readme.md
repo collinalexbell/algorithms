@@ -692,4 +692,7 @@ c1*g(n) <= f(n) <= c2*g(n)
 
 This is the definition of f(n) = θ(g(n)) so 
 f(n) = θ(g(n)) if and only if f(n) = O(g(n)) and f(n) = Ω(g(n))
+
+
+*please help me with the n > max(n1, n2) part as this is the only thing different from the combination of the 2 inequalities and the definition of BigTheta. I know there is a theorem that allows me to reduce that `forall n > max(n1, n2)` but I am not sure what it is.
 ```
