@@ -660,3 +660,36 @@ Is `2^(n+1) = O(2^n)`? Is `2^2n = O(2^n)`?
 c >= 2^n
 ```
 c is a function of n and therefore can not be constant
+
+### 3.1-5
+
+#### Question
+
+Prove Theorem 3.1:
+
+For any two functions `f(n)` and `g(n)`, we have `f(n) = θ(g(n))` if and only if `f(n) = O(g(n))` and `f(n) = Ω(g(n))`
+
+
+#### Answer
+
+By definition `f(n) = θ(g(n))` means that for some constants c1, c2, n0, for all n > n0 the following inequality holds:
+
+```
+c1*g(n) <= f(n) <= c2*g(n)
+```
+
+I will prove theorem 3.1 by showing that combination of definitions `f(n) = O(g(n))` and `f(n) = Ω(g(n))` renders the exact same inequality.
+
+```
+f(n) = O(g(n)) implies for there exists constants c and n0, for all n > n0 the following inequality holds:
+f(n) <= c*g(n)
+
+f(n) = Ω(g(n)) implies for some constants c and n0, for all n > n0 the following inequality holds:
+c*g(n) <= f(n)
+
+Combining these 2 inequalities implies, for some constants c1, c2, n1, n2 for all n > max(n1, n2):
+c1*g(n) <= f(n) <= c2*g(n)
+
+This is the definition of f(n) = θ(g(n)) so 
+f(n) = θ(g(n)) if and only if f(n) = O(g(n)) and f(n) = Ω(g(n))
+```
