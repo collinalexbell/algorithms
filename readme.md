@@ -696,3 +696,29 @@ f(n) = θ(g(n)) if and only if f(n) = O(g(n)) and f(n) = Ω(g(n))
 
 *please help me with the n > max(n1, n2) part as this is the only thing different from the combination of the 2 inequalities and the definition of BigTheta. I know there is a theorem that allows me to reduce that `forall n > max(n1, n2)` but I am not sure what it is.
 ```
+
+### 3.1-6
+
+#### Question
+
+Prove that the running time of an algorithm is  `θ(g(n))` if and only if its worst-case running time is O(g(n)) and its best-case running time is `Ω(g(n))`
+
+#### Answer
+
+```
+f(n) = θ(g(n)) -> for some c1, c2 n0: for all n > n0:
+	c1*g(n) <= f(n) <= c2*g(n) 
+
+f(n) = O(g(n)) -> for some c, n0: for all n > n0:
+	f(n) <= c*g(n)
+
+f(n) = Ω(g(n)) -> for some c, n0: for all n > n0:
+	c*g(n) <=	f(n)
+
+taking the max of the n0s for O(g(n)) and Ω(g(n)) satisfies both, since for all n > each n0, the assertion holds and therefore n0 can be increased and still hold, but not neccisarily decreased. Usining this, O(g(n)) and  Ω(g(n)) can be combined
+
+f(n) = Ω(g(n)) = O(g(n)) -> for some c1, c2, n0: for all n > n0:
+	c1*g(n) <= f(n) <= c2*g(n)
+
+This is the exact definition of θ(g(n)), so θ(g(n)) IFF Ω(g(n)) & O(g(n))
+```
