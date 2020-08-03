@@ -749,9 +749,9 @@ Therefore the inequality could never hold at such large numbers
 We can extend our notation to the case of two parameters n and m that can go to infinity independently at different reats. For a given function g(n, m), we denote by O(g(n,m)) the set of functions
 
 ```
-O(g(n,m)) = {f(n,m): there ixists positive constants c, no, and m0
-									   such that 0 <= f(n,m) <= cg(n,m)
-										 for all n >= n0 or m >= m0}
+O(g(n,m)) = {f(n,m): there exists positive constants c, no, and m0
+	such that 0 <= f(n,m) <= cg(n,m)
+	for all n >= n0 or m >= m0}
 ```
 
 Give corresponding definitions for Omega(g(n,m)) and Theta(g(n,m))
@@ -762,15 +762,15 @@ Give corresponding definitions for Omega(g(n,m)) and Theta(g(n,m))
 Omega
 
 ```
-Omega(g(n,m)) = {f(n,m): there ixists positive constants c, no, and m0
-									   such that 0 <= cg(n,m) <= f(n,m)
-										 for all n >= n0 or m >= m0}
+Omega(g(n,m)) = {f(n,m): there exists positive constants c, no, and m0
+	such that 0 <= cg(n,m) <= f(n,m)
+	for all n >= n0 or m >= m0}
 ```
 
 Theta
 
 ```
-Theta(g(n,m)) = {f(n,m): there ixists positive constants c1, c2,  no, and m0
-									   such that 0 <= c1g(n,m) <= f(n,m) <= c2g(n,m)
-										 for all n >= n0 or m >= m0}
+Theta(g(n,m)) = {f(n,m): there exists positive constants c1, c2,  no, and m0
+	such that 0 <= c1g(n,m) <= f(n,m) <= c2g(n,m)
+	for all n >= n0 or m >= m0}
 ```
