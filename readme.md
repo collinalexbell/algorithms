@@ -722,3 +722,24 @@ f(n) = Ω(g(n)) = O(g(n)) -> for some c1, c2, n0: for all n > n0:
 
 This is the exact definition of θ(g(n)), so θ(g(n)) IFF Ω(g(n)) & O(g(n))
 ```
+
+### 3.1-7c7
+
+#### Questions
+Prove that o(g(n)) intersect w(g(n)) is the empty set
+
+```
+f(n) = o(g(n)) means that for some c & n0: for all n > n0: 
+	f(n) < c * g(n)
+
+f(n) = w(g(n)) means that for some c & n0: for all n > n0:
+	f(n) > c * g(n)
+
+Combining these 2 means
+
+c1 * g(n) < f(n) < c2 * g(n) for all n > n0
+
+At the limit of n=infinity, c1 * g(n) == c2 * g(n).
+Therefore the inequality could never hold at such large numbers
+```
+
