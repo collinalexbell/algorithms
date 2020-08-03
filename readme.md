@@ -723,7 +723,7 @@ f(n) = Ω(g(n)) = O(g(n)) -> for some c1, c2, n0: for all n > n0:
 This is the exact definition of θ(g(n)), so θ(g(n)) IFF Ω(g(n)) & O(g(n))
 ```
 
-### 3.1-7c7
+### 3.1-7
 
 #### Questions
 Prove that o(g(n)) intersect w(g(n)) is the empty set
@@ -743,3 +743,34 @@ At the limit of n=infinity, c1 * g(n) == c2 * g(n).
 Therefore the inequality could never hold at such large numbers
 ```
 
+### 3.1-8
+
+#### Question
+We can extend our notation to the case of two parameters n and m that can go to infinity independently at different reats. For a given function g(n, m), we denote by O(g(n,m)) the set of functions
+
+```
+O(g(n,m)) = {f(n,m): there ixists positive constants c, no, and m0
+									   such that 0 <= f(n,m) <= cg(n,m)
+										 for all n >= n0 or m >= m0}
+```
+
+Give corresponding definitions for Omega(g(n,m)) and Theta(g(n,m))
+
+
+#### Answer
+
+Omega
+
+```
+Omega(g(n,m)) = {f(n,m): there ixists positive constants c, no, and m0
+									   such that 0 <= cg(n,m) <= f(n,m)
+										 for all n >= n0 or m >= m0}
+```
+
+Theta
+
+```
+Theta(g(n,m)) = {f(n,m): there ixists positive constants c1, c2,  no, and m0
+									   such that 0 <= c1g(n,m) <= f(n,m) <= c2g(n,m)
+										 for all n >= n0 or m >= m0}
+```
