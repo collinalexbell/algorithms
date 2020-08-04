@@ -774,3 +774,11 @@ Theta(g(n,m)) = {f(n,m): there exists positive constants c1, c2,  no, and m0
 	such that 0 <= c1g(n,m) <= f(n,m) <= c2g(n,m)
 	for all n >= n0 or m >= m0}
 ```
+
+## Exercises 3.2
+
+### 3.2-1
+#### Question
+Show that if `f(n)` and `g(n)` are monotonically increasing functions, then so are
+the functions `f(n) + g(n)` and `f(g(n))`, and if `f(n)` and `g(n)` are in addition
+nonnegative, then `f(n)•g(n)` is monotonically increasing.
