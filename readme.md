@@ -778,7 +778,21 @@ Theta(g(n,m)) = {f(n,m): there exists positive constants c1, c2,  no, and m0
 ## Exercises 3.2
 
 ### 3.2-1
+
 #### Question
 Show that if `f(n)` and `g(n)` are monotonically increasing functions, then so are
 the functions `f(n) + g(n)` and `f(g(n))`, and if `f(n)` and `g(n)` are in addition
 nonnegative, then `f(n)•g(n)` is monotonically increasing.
+
+#### Answer
+
+```
+m <= n -> f(m) <= f(n) && g(m) <= g(n)
+assume m <= n
+adding (f(m) <= f(n)) + (g(m) <= g(n)) = f(m) + g(m) <= f(n) + g(n)
+let h(x) = f(x) + g(x)
+h(m) <= h(n)
+therefore, because of the assumption m<=n:
+m <= n -> h(m) <= h(n) which is the definition of mononicity
+finally h(x) s monotonically increasing and therefore so is f(x) + g(x)
+```
