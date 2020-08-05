@@ -785,7 +785,7 @@ the functions `f(n) + g(n)` and `f(g(n))`, and if `f(n)` and `g(n)` are in addit
 nonnegative, then `f(n)•g(n)` is monotonically increasing.
 
 #### Answer
-
+Part 1
 ```
 m <= n -> f(m) <= f(n) && g(m) <= g(n)
 assume m <= n
@@ -796,3 +796,19 @@ therefore, because of the assumption m<=n:
 m <= n -> h(m) <= h(n) which is the definition of mononicity
 finally h(x) s monotonically increasing and therefore so is f(x) + g(x)
 ```
+
+Part 2
+```
+m <= n -> f(m) <= f(n) && g(m) <= g(n)
+assume m <= n for all m & n
+assume f(m) >= 0 && g(m) >=0 for all m
+
+If 0 < A < B and 0 < C <= D then 0 < AC < BD: http://people.sju.edu/~pklingsb/ineq.pdf
+
+Substituing f(m)=A, f(n)=B, g(m)=C, g(n)=D:
+	for all m & n: m<=n: (f(m) <= f(n)) * (g(m) <= g(n)) = (f(m) * g(m)) <= (f(n) * g(n))
+Substituting h(x) for f(x) * g(x) renders:
+	for all m & n: h(m) <= h(n)
+Therefore h(x) is monotonically increasing and so is f(x) * g(x)
+```
+
