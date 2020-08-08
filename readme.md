@@ -853,3 +853,5 @@ lg(sqrt(2(pi)n) + lg((n/e)^n) +  lg((1+ϴ(1/n)))
 1/2*lg(2(pi)n) + n*lg(n) - n*lg(e) + lg((1+ϴ(1/n)))
 n*lg(n) is the dominating term, therefore lg(n!) = ϴ(nlgn)
 ```
+
+TODO: Part 2
