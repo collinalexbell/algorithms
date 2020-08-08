@@ -865,3 +865,6 @@ Is the function `ceil(lgn)!` polynomially bounded? Is the function `ceil(lg(lg(n
 #### Answer
 
 TODO: Not ready to answer this
+
+## Ch 4
+I am skipping the remainder of chapter 3 for now, because it is too math heavy. I will get a math tutor at the end of this book to help me with Ch3 problems
