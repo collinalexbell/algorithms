@@ -812,3 +812,8 @@ Substituting h(x) for f(x) * g(x) renders:
 Therefore h(x) is monotonically increasing and so is f(x) * g(x)
 ```
 
+### 3.2-2
+
+#### Question
+
+OMG, I was trying to prove the wrong equation :(
