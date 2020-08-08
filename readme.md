@@ -816,4 +816,18 @@ Therefore h(x) is monotonically increasing and so is f(x) * g(x)
 
 #### Question
 
-OMG, I was trying to prove the wrong equation :(
+Prove equation 3.16
+
+```
+a^(logb(c)) = c^logb(a)
+```
+
+#### Answer
+
+```
+f = a^(logb(c)) 
+  = a^(loga(c)/loga(b))
+  = c^(1/loga(b))
+  = c^(logb(a))
+a^(logb(c)) = c^(logb(a))
+```
