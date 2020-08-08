@@ -1,5 +1,5 @@
 CC = gcc -g
-all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule inversions
+all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule inversions max_subarray
 
 gensort: gensort.c
 	$(CC) gensort.c -o gensort.exe
@@ -39,6 +39,9 @@ horners_rule: horners_rule.c
 
 inversions: inversions.c
 	$(CC) inversions.c -o inversions.exe
+
+max_subarray: max_subarray.c
+	$(CC) max_subarray.c -o max_subarray.exe
 
 clean: 
 	rm *.exe
