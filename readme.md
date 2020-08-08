@@ -855,3 +855,13 @@ n*lg(n) is the dominating term, therefore lg(n!) = ϴ(nlgn)
 ```
 
 TODO: Part 2
+
+### 3.2-4
+
+#### Question 
+
+Is the function `ceil(lgn)!` polynomially bounded? Is the function `ceil(lg(lg(n)))!` polynomially bounded?
+
+#### Answer
+
+TODO: Not ready to answer this
