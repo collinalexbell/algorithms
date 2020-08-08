@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <bits/stdc++.h>
+#include <limits.h>
 
 struct SubArray {
 	int start;
 	int end;
 	int sum;
-}
+};
 
 struct SubArray cross_max_subarray(int *A, int start, int mid, int end) {
 	int right_max, left_max, right_sum, left_sum, sum, i;
@@ -34,17 +34,19 @@ struct SubArray cross_max_subarray(int *A, int start, int mid, int end) {
 		} 
 	}
 
-	return struct SubArray{left_max, right_max, left_sum + right_sum};
+	struct SubArray rv = {left_max, right_max, left_sum + right_sum};
+	return rv;
 }
 
 struct SubArray max_subarray(int *A, int start, int end) {
 	int mid;
 	struct SubArray left, right, cross;
 	if(end-start == 1) {
-		return SubArray{start, end, A[start]};
+		struct SubArray rv = {start, end, A[start]};
+		return rv;
 	}
 
-	mid = (end-start)/2
+	mid = (end+start)/2;
 	left = max_subarray(A, start, mid);
 	right = max_subarray(A, mid, end);
 	cross = cross_max_subarray(A, start, mid, end);
@@ -61,8 +63,6 @@ int main(int argc, char** argv) {
 	struct SubArray result;
 
 	int A[10000];
-
-	v = atoi(argv[1]);
 
 	len = 0;
 	while(len < 10000 && scanf("%d", &A[len]) != EOF) {
