@@ -831,3 +831,25 @@ f = a^(logb(c))
   = c^(logb(a))
 a^(logb(c)) = c^(logb(a))
 ```
+
+### 3.2-3
+
+#### Question
+
+Prove equation 3.19. Also prove that `n! = w(2^n)` and `n!=o(n^n)`
+
+```
+lg(n!) = ϴ(nlgn)
+```
+
+#### Answer
+
+```
+lg(n!)
+Substituting Sterlings approximation for n!:
+lg(sqrt(2(pi)n) * (n/e)^n * (1+ϴ(1/n)))
+lg(sqrt(2(pi)n) + lg((n/e)^n) +  lg((1+ϴ(1/n)))
+1/2*lg(2(pi)n) + n*lg(n/e) + lg((1+ϴ(1/n)))
+1/2*lg(2(pi)n) + n*lg(n) - n*lg(e) + lg((1+ϴ(1/n)))
+n*lg(n) is the dominating term, therefore lg(n!) = ϴ(nlgn)
+```
