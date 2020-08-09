@@ -868,3 +868,11 @@ TODO: Not ready to answer this
 
 ## Ch 4
 I am skipping the remainder of chapter 3 for now, because it is too math heavy. I will get a math tutor at the end of this book to help me with Ch3 problems
+
+### 4.1-100
+
+#### Question
+What does FIND-MAXIMUM-SUBARRAY return when all elements of A are negative?
+
+#### Answer
+It returns the largest number (smallest absolute value) in the array of negative numbers.

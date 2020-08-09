@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <limits.h>
 
+#define DEBUG 0
+
 struct SubArray {
 	int start;
 	int end;
@@ -14,7 +16,6 @@ struct SubArray cross_max_subarray(int *A, int start, int mid, int end) {
 	left_max = mid;
 	right_max = mid + 1;
 
-	left_sum = 0;
 	sum = 0;
 	for(i = left_max; i >= start; i--) {
 		sum = sum + A[i];
@@ -24,7 +25,6 @@ struct SubArray cross_max_subarray(int *A, int start, int mid, int end) {
 		}
 	}
 
-	right_sum = 0;
 	sum = 0;
 	for(i = right_max; i < end; i++) {
 		sum = sum + A[i];
@@ -32,6 +32,11 @@ struct SubArray cross_max_subarray(int *A, int start, int mid, int end) {
 			right_sum = sum;
 			right_max = i+1;
 		} 
+	}
+
+	// remove sentinal value right loop never ran
+	if(sum == 0) {
+		right_sum = 0;
 	}
 
 	struct SubArray rv = {left_max, right_max, left_sum + right_sum};
@@ -51,6 +56,10 @@ struct SubArray max_subarray(int *A, int start, int end) {
 	right = max_subarray(A, mid, end);
 	cross = cross_max_subarray(A, start, mid, end);
 
+	if(DEBUG) {
+		printf("[%d:%d:%d]", start, mid, end);
+		printf("left_sum: %d, cross_sum: %d, right_sum: %d\n", left.sum, cross.sum, right.sum);
+	}
 	if(left.sum >= right.sum && left.sum >= cross.sum) return left;
 	if(right.sum >= left.sum && right.sum >= cross.sum) return right;
 	return cross;
