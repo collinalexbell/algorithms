@@ -869,7 +869,7 @@ TODO: Not ready to answer this
 ## Ch 4
 I am skipping the remainder of chapter 3 for now, because it is too math heavy. I will get a math tutor at the end of this book to help me with Ch3 problems
 
-### 4.1-100
+### 4.1-1
 
 #### Question
 What does FIND-MAXIMUM-SUBARRAY return when all elements of A are negative?
