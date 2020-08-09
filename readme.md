@@ -876,3 +876,38 @@ What does FIND-MAXIMUM-SUBARRAY return when all elements of A are negative?
 
 #### Answer
 It returns the largest number (smallest absolute value) in the array of negative numbers.
+
+### 4.1-2
+
+#### Question
+Write psuedocode for the brute-force method of solving the maximum-subarray problem. Your procedure should run in θ(n^2) time.
+
+#### Answer
+
+I wrote C code instead:
+
+```C
+struct SubArray max_subarray(int *A, int len) {
+        int i, j, sum;
+        struct SubArray rv;
+        rv.sum = INT_MIN;
+        for(i = 0; i < len; i++) {
+                sum = A[i];
+                if(sum > rv.sum) {
+                        rv.start = i;
+                        rv.end = i+1;
+                        rv.sum = sum;
+                }
+                for(j = i+1; j < len; j++) {
+                        sum = sum + A[j];
+                        if(sum > rv.sum) {
+                                rv.start = i;
+                                rv.end = j+1;
+                                rv.sum = sum;
+                        }
+                }
+        }
+
+        return rv;
+}
+```
