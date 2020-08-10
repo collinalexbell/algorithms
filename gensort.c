@@ -16,7 +16,9 @@ int main (int argc, char** argv) {
 		srand(time(0));
 	}
 
+	int sign;
 	for(i = 0; i < n; i++) {
-		printf("%d ", rand() % r);
+		sign = ((rand() % 2) == 1) ? -1 : 1;
+		printf("%d ", (rand() % r) * sign);
 	}
 }
