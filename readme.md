@@ -977,3 +977,5 @@ struct SubArray max_subarray(int *A, int start, int end) {
 
 }
 ```
+
+[max_subarray_text.c](./max_subarray_test.c) is used to benchmark the 2 versions of the algorithm. Currently, this test still needs work.
