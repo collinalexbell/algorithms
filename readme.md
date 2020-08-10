@@ -911,3 +911,69 @@ struct SubArray max_subarray(int *A, int len) {
         return rv;
 }
 ```
+
+### 4.1-3
+
+#### Question
+Implement both the brute-force and recursive algorithms for the maximum subarray problem on your own computer. What problem ize n0 gives the crossoverpoint at which the recursive algorithm beats the brute-force algorithm? Then, change the base case of the recursive algorithm to use the brute force algorithm whenever the problem size is less than n0. Does taht change the crossover point?
+
+#### Answer
+I have already implemented the recursive and brute force alorithms. The brute force C code is show in 4.1-2. Below is the recursive solution
+
+```C
+struct SubArray cross_max_subarray(int *A, int start, int mid, int end) {
+        int right_max, left_max, right_sum, left_sum, sum, i;
+        left_sum = right_sum = INT_MIN;
+        left_max = mid;
+        right_max = mid + 1;
+
+        sum = 0;
+        for(i = left_max; i >= start; i--) {
+                sum = sum + A[i];
+                if(sum > left_sum) {
+                        left_sum = sum;
+                        left_max = i;
+                }
+        }
+
+        sum = 0;
+        for(i = right_max; i < end; i++) {
+                sum = sum + A[i];
+                if(sum > right_sum) {
+                        right_sum = sum;
+                        right_max = i+1;
+                }
+        }
+
+        // remove sentinal value right loop never ran
+        if(sum == 0) {
+                right_sum = 0;
+        }
+
+        struct SubArray rv = {left_max, right_max, left_sum + right_sum};
+        return rv;
+}
+
+struct SubArray max_subarray(int *A, int start, int end) {
+        int mid;
+        struct SubArray left, right, cross;
+        if(end-start == 1) {
+                struct SubArray rv = {start, end, A[start]};
+                return rv;
+        }
+
+        mid = (end+start)/2;
+        left = max_subarray(A, start, mid);
+        right = max_subarray(A, mid, end);
+        cross = cross_max_subarray(A, start, mid, end);
+
+        if(DEBUG) {
+                printf("[%d:%d:%d]", start, mid, end);
+                printf("left_sum: %d, cross_sum: %d, right_sum: %d\n", left.sum, cross.sum, right.sum);
+        }
+        if(left.sum >= right.sum && left.sum >= cross.sum) return left;
+        if(right.sum >= left.sum && right.sum >= cross.sum) return right;
+        return cross;
+
+}
+```
