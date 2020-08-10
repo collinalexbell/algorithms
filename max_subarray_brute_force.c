@@ -10,7 +10,7 @@ struct SubArray {
 	int sum;
 };
 
-struct SubArray max_subarray(int *A, int len) {
+struct SubArray max_subarray(int* A, int len) {
 	int i, j, sum;
 	struct SubArray rv;
 	rv.sum = INT_MIN;
@@ -39,19 +39,12 @@ int main(int argc, char** argv) {
 
 	struct SubArray result;
 
-	int A[10000];
+	int* A = (int*) malloc(sizeof(int) * 10000000);
 
 	len = 0;
-	while(len < 10000 && scanf("%d", &A[len]) != EOF) {
+	while(len < 10000000 && scanf("%d", &A[len]) != EOF) {
 		len++;
 	}
-
-
-	for(i = 0; i < len; i++) {
-		printf("%d, ", A[i]);
-	}
-	printf("\n");
-
 
 	result = max_subarray(A, len);
 

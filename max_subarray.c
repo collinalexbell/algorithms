@@ -71,19 +71,12 @@ int main(int argc, char** argv) {
 
 	struct SubArray result;
 
-	int A[10000];
+	int* A = (int*) malloc(sizeof(int) * 10000000);
 
 	len = 0;
-	while(len < 10000 && scanf("%d", &A[len]) != EOF) {
+	while(len < 10000000 && scanf("%d", &A[len]) != EOF) {
 		len++;
 	}
-
-
-	for(i = 0; i < len; i++) {
-		printf("%d, ", A[i]);
-	}
-	printf("\n");
-
 
 	result = max_subarray(A, 0, len);
 
