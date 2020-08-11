@@ -21,6 +21,8 @@ void run(int n) {
 	}
 	wait(NULL);
 
+	// This is garbage, I can just use popen and wait()
+	/*
 	times[0] = time(NULL);
 	pid_t proc = fork();
 	if(proc == 0) {
@@ -41,6 +43,7 @@ void run(int n) {
 		wait(NULL);
 	}
 	times[3] = time(NULL);
+	*/
 
 
 	printf("recursive: %ld, brute_force: %ld\n\n", times[3]-times[2], times[1]-times[0]);
