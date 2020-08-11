@@ -81,6 +81,8 @@ int main(int argc, char** argv) {
 	result = max_subarray(A, 0, len);
 
 	printf("\n\nresult: A[%d:%d] == %d\n", result.start, result.end, result.sum);
+
+	free(A);
 }
 
 
