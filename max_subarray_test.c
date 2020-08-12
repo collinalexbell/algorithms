@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
+#include <sys/time.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
 void run(int n) {
-	time_t times [4];
+	struct timeval times[4];
 	char gensort_cmd [256];
 	int len;
 	
@@ -20,37 +20,42 @@ void run(int n) {
 		len++;
 	}
 	wait(NULL);
+	pclose(gensort);
 
-	// This is garbage, I can just use popen and wait()
-	/*
-	times[0] = time(NULL);
-	pid_t proc = fork();
-	if(proc == 0) {
-		// run max subarray using pipe and sh
-		printf("in a seperate process\n");
-		exit(0);
-	} else {
-		wait(NULL);
+	gettimeofday(&times[0], NULL);
+	FILE* brute_force_f = popen("./max_subarray_brute_force.exe", "w");
+	for(int i = 0; i < n; i++) {
+		fprintf(brute_force_f, "%d ", A[i]);
 	}
-	times[1] = time(NULL);
+	fprintf(brute_force_f, "\n");
+	pclose(brute_force_f);
+	wait(NULL);
+	gettimeofday(&times[1], NULL);
 
-	times[2] = time(NULL);
- 	proc = fork();
-	if(proc == 0) {
-		printf("in a seperate process\n");
-		exit(0);
-	} else {
-		wait(NULL);
+
+	gettimeofday(&times[2], NULL);
+	FILE* recursive_f = popen("./max_subarray.exe", "w");
+	for(int i = 0; i < n; i++) {
+		fprintf(recursive_f, "%d ", A[i]);
 	}
-	times[3] = time(NULL);
-	*/
+	fprintf(recursive_f, "\n");
+	pclose(recursive_f);
+	wait(NULL);
+	gettimeofday(&times[3], NULL);
 
 
-	printf("recursive: %ld, brute_force: %ld\n\n", times[3]-times[2], times[1]-times[0]);
+
+	long int millis[4];
+	for(int i = 0; i < 4; i++) {
+		millis[i] = times[i].tv_sec * 1000000 + times[i].tv_usec;
+	}
+	printf("brute_force time: %ld\n", millis[1]-millis[0]);
+	printf("recursive time: %ld\n", millis[3]-millis[2]);
+	free(A);
 }
 
 int main() {
-	for(int n = 10000; n < 1000000; n = n*2) {
+	for(int n = 10; n < 1000; n++) {
 		run(n);
 	}
 }
