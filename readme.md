@@ -978,6 +978,6 @@ struct SubArray max_subarray(int *A, int start, int end) {
 }
 ```
 
-[max_subarray_text.c](./max_subarray_test.c) is used to benchmark the 2 versions of the algorithm.The algorithms runs j trials in which it runs over n from 10 to 600. A kernel of 10 values from n-5 to n+5 are averaged together. The best run is the run that minimizes the difference between the brute force and recursive times across the kernel. That value is considered the crossover point. I then average that crossover point across the j runs. 
+[max_subarray_test.c](./max_subarray_test.c) is used to benchmark the 2 versions of the algorithm.The algorithms runs j trials in which it runs over n from 10 to 600. A kernel of 10 values from n-5 to n+5 are averaged together. The best run is the run that minimizes the difference between the brute force and recursive times across the kernel. That value is considered the crossover point. I then average that crossover point across the j runs. 
 
-The crossover n seems to be located ~n=100. The crossover point did decrease when using the optimized code with both bruteforce and recursive. The speed up wasn't very dramatic though and my n calibration was messed up because of noise. I think I would choose to run with a crossover point < 100, maybe ~25. 
+The crossover n seems to be located ~n=100. The crossover point did decrease when using the optimized code with both bruteforce and recursive. The speed up wasn't very dramatic though and my n calibration was a bit messed up because of noise, even after running large ensembles. I think I would choose to run with a crossover point < 100, maybe ~25. 
