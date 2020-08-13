@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
+#include <time.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -16,7 +17,7 @@ struct RunStat run(int n) {
 	int len;
 	
 	// create list of n digits between -1000 to 1000 and seed generator with n
-	sprintf(gensort_cmd, "./gensort.exe %d 1000 %d", n, n);
+	sprintf(gensort_cmd, "./gensort.exe %d 1000 %ld", n, (n + time(NULL)));
 	FILE* gensort = popen(gensort_cmd, "r");
 
 	int* A = (int*) malloc(sizeof(int) * n);
@@ -29,7 +30,7 @@ struct RunStat run(int n) {
 	pclose(gensort);
 
 	gettimeofday(&times[0], NULL);
-	FILE* brute_force_f = popen("./max_subarray_brute_force.exe", "w");
+	FILE* brute_force_f = popen("./max_subarray_brute_force.exe > /dev/null", "w");
 	for(int i = 0; i < n; i++) {
 		fprintf(brute_force_f, "%d ", A[i]);
 	}
@@ -40,7 +41,8 @@ struct RunStat run(int n) {
 
 
 	gettimeofday(&times[2], NULL);
-	FILE* recursive_f = popen("./max_subarray.exe", "w");
+	//Change this to be max_subarray_optimized.exe to run part b
+	FILE* recursive_f = popen("./max_subarray.exe > /dev/null", "w");
 	for(int i = 0; i < n; i++) {
 		fprintf(recursive_f, "%d ", A[i]);
 	}
@@ -56,41 +58,51 @@ struct RunStat run(int n) {
 		millis[i] = times[i].tv_sec * 1000000 + times[i].tv_usec;
 	}
 	struct RunStat rv = {millis[1]-millis[0], millis[3]-millis[2]};
-	printf("brute_force time: %ld\n", rv.brute_force);
-	printf("recursive time: %ld\n", rv.recursive);
 	free(A);
 	return rv;
 }
 
-int main() {
+int main(int argc, char** argv) {
 	long long int sum_brute_force = 0;
 	long long int sum_recursive = 0;
 	// queue
 	struct RunStat kernel[10];
 	struct RunStat best, tmp;
-	best.brute_force = 10000000;
-	best.recursive = 0;
-	int best_n;
+	int best_n, avg_n;
+	int times = 5;
 	
-
-	for(int n = 10; n < 1000; n++) {
-		kernel[n%10] = run(n);
-		if(n >= 20) {
-			sum_brute_force =	0;
-			sum_recursive = 0;
-			for(int i =0; i < 10; i++) {
-				sum_brute_force = sum_brute_force + kernel[i].brute_force;
-				sum_recursive = sum_brute_force + kernel[i].recursive;
-				tmp.brute_force = sum_brute_force;
-				tmp.recursive = sum_recursive;
-			}
-			if(abs(tmp.brute_force - tmp.recursive) < abs(best.brute_force - best.recursive)) {
-				best = tmp;
-				best_n = n - 5;
-			}
-		}
+	char buff[10];
+	if(argc >= 2) {
+		sscanf(argv[1], "%d", &times);
 	}
 
-	printf("crossover n:%d\n", best_n);
-	printf("brute_force: %ld, recursive: %ld", best.brute_force, best.recursive);
+	avg_n = 0;
+
+	for(int j = 0; j < times; j++) {
+		printf("time #: %d\n", j);
+		best.brute_force = 10000000;
+		best.recursive = 0;
+		for(int n = 10; n < 1000; n++) {
+			kernel[n%10] = run(n);
+			if(n >= 20) {
+				sum_brute_force =	0;
+				sum_recursive = 0;
+				for(int i = 0; i < 10; i++) {
+					sum_brute_force = sum_brute_force + kernel[i].brute_force;
+					sum_recursive = sum_brute_force + kernel[i].recursive;
+					tmp.brute_force = sum_brute_force;
+					tmp.recursive = sum_recursive;
+				}
+				if(abs(tmp.brute_force - tmp.recursive) < abs(best.brute_force - best.recursive)) {
+					best = tmp;
+					best_n = n - 5;
+				}
+			}
+		}
+		avg_n = avg_n + best_n;
+		printf("crossover n:%d\n", best_n);
+	}
+	avg_n = avg_n / times;
+	printf("\n");
+	printf("average crossover n:%d\n", avg_n);
 }

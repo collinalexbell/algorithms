@@ -1,5 +1,5 @@
 CC = gcc -g
-all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule inversions max_subarray max_subarray_brute_force max_subarray_test
+all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule inversions max_subarray max_subarray_brute_force max_subarray_test max_subarray_optimized
 
 gensort: gensort.c
 	$(CC) gensort.c -o gensort.exe
@@ -49,6 +49,9 @@ max_subarray_brute_force: max_subarray_brute_force.c
 
 max_subarray_test: max_subarray_test.c
 	$(CC) max_subarray_test.c -o max_subarray_test.exe
+
+max_subarray_optimized: max_subarray_optimized.c
+	$(CC) max_subarray_optimized.c -o max_subarray_optimized.exe
 
 clean: 
 	rm *.exe
