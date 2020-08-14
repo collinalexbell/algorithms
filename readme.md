@@ -981,3 +981,11 @@ struct SubArray max_subarray(int *A, int start, int end) {
 [max_subarray_test.c](./max_subarray_test.c) is used to benchmark the 2 versions of the algorithm.The algorithms runs j trials in which it runs over n from 10 to 600. A kernel of 10 values from n-5 to n+5 are averaged together. The best run is the run that minimizes the difference between the brute force and recursive times across the kernel. That value is considered the crossover point. I then average that crossover point across the j runs. 
 
 The crossover n seems to be located ~n=100. The crossover point did decrease when using the optimized code with both bruteforce and recursive. The speed up wasn't very dramatic though and my n calibration was a bit messed up because of noise, even after running large ensembles. I think I would choose to run with a crossover point < 100, maybe ~25. 
+
+### 4.1-4
+
+#### Question
+Suppose we change the definition of the maximum-subarray problem to allow the result to be an empty subarray, where the sum of the values of an empty subarray is 0. How would you change any of the algorithms that do not allow empty subarrays to permit an empty subarray to be the result?
+
+#### Answer
+If the base case of max_subarray is < 0, then just return the empty answer. This is the brute force naive method. The simple method is to do a linear scan of the array and check if a positive number exists. If it doesn't, then return 0
