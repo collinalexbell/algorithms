@@ -989,3 +989,53 @@ Suppose we change the definition of the maximum-subarray problem to allow the re
 
 #### Answer
 If the base case of max_subarray is < 0, then just return the empty answer. This is the brute force naive method. The simple method is to do a linear scan of the array and check if a positive number exists. If it doesn't, then return 0
+
+### 4.1-5
+
+#### Question
+Use the following ideas to develop a nonrecursive, linear-time algorithm for the maximum-subarray problem. Start at the left end of the array, and progress toward the right, keeping track of the maximum subarray seen so far. Knowing a maximum subarray of A[1..j], extend the answer to find a maxiumum subarray ending at index j+1 uby using the following observation: a maxiumum subarray of A[1..j + 1] is either a maxiumum subarray of A[1..j] or a subarray A[i..j + 1], for some 1 <= i <= j + 1. Determine a maximum subarray of the form A[i .. j + 1] in constant time based on knowing a maxiumum subarray ending at index j.
+
+#### Answer
+I need to keep 2 subarrays. The first subarray is the max subarray of A[i .. j+1]. The second is the max_subarray of A[1 .. j]. I call these the "biggest" and "biggest_including_current"
+```
+[-5, 5, -10, 11, -11, 10, -1, 3]
+
+biggest                    {0}  {-5} {5}       {5}   {11}       {11} {11}      {11}           {10, -1, 3}
+biggest_including_current  {-5} {5}  {5, -10}  {11}  {11, -11}  {10} {10, -1}  {10, -1, 3}
+```
+
+Here is the C code that does that
+```C
+struct SubArray max_subarray(int *A,  int len) {
+        int i;
+        struct SubArray max, max_with_current;
+
+        max.sum = INT_MIN;
+        max.start = -1;
+        max.end = -1;
+
+
+        max_with_current.sum = 0;
+        max_with_current.start = -1;
+        max_with_current.end = -1;
+
+        for(i = 0; i < len; i++) {
+                if(max_with_current.sum > 0) {
+                        max_with_current.sum = max_with_current.sum + A[i];
+                        max_with_current.end = i + 1;
+                } else {
+                        max_with_current.sum =  A[i];
+                        max_with_current.start = i;
+                        max_with_current.end = i + 1;
+                }
+
+                if(max_with_current.sum > max.sum) {
+                        max.start = max_with_current.start;
+                        max.end = max_with_current.end;
+                        max.sum = max_with_current.sum;
+                }
+        }
+
+        return max;
+}
+```
