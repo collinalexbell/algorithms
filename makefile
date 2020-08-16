@@ -1,5 +1,5 @@
 CC = gcc -g
-all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule inversions max_subarray max_subarray_brute_force max_subarray_test max_subarray_optimized max_subarray_lin_time matrix_multiply_naive matrix_multiply_strassen
+all: merge_sort binary_addition gensort insertion_sort insertion_sort_reverse linear_search selection_sort merge_sort_no_sentinels binary_search sum_in_set bubble_sort horners_rule inversions max_subarray max_subarray_brute_force max_subarray_test max_subarray_optimized max_subarray_lin_time matrix_multiply_naive matrix_multiply_strassen matrix_multiply_recursive
 
 gensort: gensort.c
 	$(CC) gensort.c -o gensort.exe
@@ -61,6 +61,9 @@ matrix_multiply_naive: matrix_multiply_naive.c
 
 matrix_multiply_strassen: matrix_multiply_strassen.c
 	$(CC) matrix_multiply_strassen.c -o matrix_multiply_starssen.exe
+
+matrix_multiply_recursive: matrix_multiply_recursive.c
+	$(CC) matrix_multiply_recursive.c -o matrix_multiply_recursive.exe
 
 clean: 
 	rm *.exe
