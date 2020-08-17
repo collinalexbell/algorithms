@@ -25,6 +25,29 @@ struct Point {
 	int col;
 };
 
+struct Point pointAdd(struct Point p, int row, int col) {
+  struct Point rv = {p.row + row, p.col + col};
+  return rv;
+}
+
+void matrix_copy(int** C, int** to_copy, struct Point start, int n) {
+  int row, col;
+  for(row = start.row; row < start.row + n; row++) {
+    for(col = start.col; col < start.col + n; col++) {
+      C[row][col] = to_copy[row][col];
+    }
+  }
+}
+
+void matrix_add(int** A, int** B, int n) {
+  int row, col;
+  for(row = 0; row < n; row++) {
+    for(col = 0; col < n; col++) {
+      A[row][col] = A[row][col] + B[row][col];
+    }
+  }
+}
+
 int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB, int n) {
 	int** C = create_array(n);
 	if(n == 1) {
@@ -33,7 +56,7 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 	}
 
   int mid = n/2;
-  struct copy_start Point;
+  struct Point copy_start;
 
   int** tmp[2];
   //C11
@@ -42,7 +65,7 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
   matrix_add(tmp[0], tmp[1], mid);
   copy_start.row = 0;
   copy_start.col = 0;
-  matrix_copy(C, tmp[0], copy_start)
+  matrix_copy(C, tmp[0], copy_start, mid);
   destroy_array(tmp[0]);
   destroy_array(tmp[1]);
 
@@ -52,7 +75,7 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
   matrix_add(tmp[0], tmp[1], mid);
   copy_start.row = 0;
   copy_start.col = mid;
-  matrix_copy(C, tmp[0], copy_start)
+  matrix_copy(C, tmp[0], copy_start, mid);
   destroy_array(tmp[0]);
   destroy_array(tmp[1]);
 
@@ -62,7 +85,7 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
   matrix_add(tmp[0], tmp[1], mid);
   copy_start.row = mid;
   copy_start.col = 0;
-  matrix_copy(C, tmp[0], copy_start)
+  matrix_copy(C, tmp[0], copy_start, mid);
   destroy_array(tmp[0]);
   destroy_array(tmp[1]);
 
@@ -72,7 +95,7 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
   matrix_add(tmp[0], tmp[1], mid);
   copy_start.row = mid;
   copy_start.col = mid;
-  matrix_copy(C, tmp[0], copy_start)
+  matrix_copy(C, tmp[0], copy_start, mid);
   destroy_array(tmp[0]);
   destroy_array(tmp[1]);
 
@@ -88,7 +111,7 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
-	n = atoi(argv[1]);	
+	n = atoi(argv[1]);
 	if(n < 0 || n > MAX_N) {
 		fprintf(stderr,"invalid n:%d for (n x n)	 matrix", n);
 	}
