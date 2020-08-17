@@ -32,6 +32,50 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 		return C;
 	}
 
+  int mid = n/2;
+  struct copy_start Point;
+
+  int** tmp[2];
+  //C11
+  tmp[0] = matrix_multiply(A, B, startA, startB, mid);
+  tmp[1] = matrix_multiply(A, B, pointAdd(startA, 0, mid), pointAdd(startB, mid, 0), mid);
+  matrix_add(tmp[0], tmp[1], mid);
+  copy_start.row = 0;
+  copy_start.col = 0;
+  matrix_copy(C, tmp[0], copy_start)
+  destroy_array(tmp[0]);
+  destroy_array(tmp[1]);
+
+  //C12
+  tmp[0] = matrix_multiply(A, B, startA, pointAdd(startB, 0, mid), mid);
+  tmp[1] = matrix_multiply(A, B, pointAdd(startA, 0, mid), pointAdd(startB, mid, mid), mid);
+  matrix_add(tmp[0], tmp[1], mid);
+  copy_start.row = 0;
+  copy_start.col = mid;
+  matrix_copy(C, tmp[0], copy_start)
+  destroy_array(tmp[0]);
+  destroy_array(tmp[1]);
+
+  //C21
+  tmp[0] = matrix_multiply(A, B, pointAdd(startA, mid, 0), startB, mid);
+  tmp[1] = matrix_multiply(A, B, pointAdd(startA, mid, mid), pointAdd(startB, mid, 0), mid);
+  matrix_add(tmp[0], tmp[1], mid);
+  copy_start.row = mid;
+  copy_start.col = 0;
+  matrix_copy(C, tmp[0], copy_start)
+  destroy_array(tmp[0]);
+  destroy_array(tmp[1]);
+
+  //C22
+  tmp[0] = matrix_multiply(A, B, pointAdd(startA, mid, 0), pointAdd(startB, 0, mid), mid);
+  tmp[1] = matrix_multiply(A, B, pointAdd(startA, mid, mid), pointAdd(startB, mid, mid), mid);
+  matrix_add(tmp[0], tmp[1], mid);
+  copy_start.row = mid;
+  copy_start.col = mid;
+  matrix_copy(C, tmp[0], copy_start)
+  destroy_array(tmp[0]);
+  destroy_array(tmp[1]);
+
 	return C;
 }
 
