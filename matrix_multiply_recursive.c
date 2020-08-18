@@ -32,9 +32,9 @@ struct Point pointAdd(struct Point p, int row, int col) {
 
 void matrix_copy(int** C, int** to_copy, struct Point start, int n) {
   int row, col;
-  for(row = start.row; row < start.row + n; row++) {
-    for(col = start.col; col < start.col + n; col++) {
-      C[row][col] = to_copy[row][col];
+  for(row = 0; row < n; row++) {
+    for(col = 0; col < n; col++) {
+      C[row + start.row][col + start.col] = to_copy[row][col];
     }
   }
 }
