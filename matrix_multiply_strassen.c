@@ -64,7 +64,31 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 		return C;
 	}
 
+
   int mid = n/2;
+	int** S[10];
+	int*** input[10];
+	struct Point* start[10];
+
+	for(int i = 0; i < 10; i++) {
+		// 2 input matrices per addition/subtraction
+		input[i] = malloc(sizeof(int*) * 2);
+		start[i] = malloc(sizeof(struct Point *) * 2);
+		for(int j = 0; j < 2; j++) {
+			input[i][j] = create_array(mid);
+			start[i][j] = malloc(sizeof(struct Point));
+		}
+		S[i] = create_array(mid);
+	}
+
+	for(int i = 0; i < 10; i++) {
+		if(methodIsAdd[i]) {
+			matrix_add(input[i][0], input[i][1], start[i][0], start[i][1], S[i]);
+		} else {
+			matrix_subtract(input[i][0], input[i][1], start[i][0], start[i][1], S[i]);
+		}
+	}
+	
 	return C;
 }
 
