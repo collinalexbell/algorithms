@@ -39,22 +39,26 @@ void matrix_copy(int** C, int** to_copy, struct Point start, int n) {
   }
 }
 
-void matrix_add(int** A, int** B, int** C, int n) {
+int** matrix_add(int** A, int** B, struct Point startA, struct Point startB, int n) {
+	int ** C = create_array(n);
   int row, col;
   for(row = 0; row < n; row++) {
     for(col = 0; col < n; col++) {
-      C[row][col] = A[row][col] + B[row][col];
+      C[row][col] = A[row + startA.row][col + startA.col] + B[row + startB.row][col + startB.col];
     }
   }
+	return C;
 }
 
-void matrix_subtract(int** A, int** B, int** C, int n) {
+int** matrix_subtract(int** A, int** B, struct Point startA, struct Point startB, n) {
+	int ** C = create_array(n);
   int row, col;
   for(row = 0; row < n; row++) {
     for(col = 0; col < n; col++) {
-      C[row][col] = A[row][col] - B[row][col];
+      C[row][col] = A[row + startA.row][col + startA.col] - B[row + startB.row][col.startB.col];
     }
   }
+	return C;
 }
 
 int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB, int n) {
@@ -69,6 +73,7 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 	int** S[10];
 	int*** input[10];
 	struct Point* start[10];
+	bool methodIsAdd[10];
 
 	for(int i = 0; i < 10; i++) {
 		// 2 input matrices per addition/subtraction
@@ -81,11 +86,12 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 		S[i] = create_array(mid);
 	}
 
+
 	for(int i = 0; i < 10; i++) {
 		if(methodIsAdd[i]) {
-			matrix_add(input[i][0], input[i][1], start[i][0], start[i][1], S[i]);
+			S[i] = matrix_add(input[i][0], input[i][1], start[i][0], start[i][1], mid);
 		} else {
-			matrix_subtract(input[i][0], input[i][1], start[i][0], start[i][1], S[i]);
+			S[i] = matrix_subtract(input[i][0], input[i][1], start[i][0], start[i][1], mid);
 		}
 	}
 	
