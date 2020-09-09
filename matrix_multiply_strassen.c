@@ -39,23 +39,23 @@ void matrix_copy(int** C, int** to_copy, struct Point start, int n) {
   }
 }
 
-int** matrix_add(int** A, int** B, struct Point startA, struct Point startB, int n) {
+int** matrix_add(int*** inputs, struct Point* starts, int n) {
 	int ** C = create_array(n);
   int row, col;
   for(row = 0; row < n; row++) {
     for(col = 0; col < n; col++) {
-      C[row][col] = A[row + startA.row][col + startA.col] + B[row + startB.row][col + startB.col];
+      C[row][col] = inputs[0][row + starts[0].row][col + starts[0].col] + inputs[1][row + starts[1].row][col + starts[1].col];
     }
   }
 	return C;
 }
 
-int** matrix_subtract(int** A, int** B, struct Point startA, struct Point startB, n) {
+int** matrix_subtract(int*** inputs, struct Point* starts, int n) {
 	int ** C = create_array(n);
   int row, col;
   for(row = 0; row < n; row++) {
     for(col = 0; col < n; col++) {
-      C[row][col] = A[row + startA.row][col + startA.col] - B[row + startB.row][col.startB.col];
+      C[row][col] = inputs[0][row + starts[0].row][col + starts[0].col] - inputs[1][row + starts[1].row][col + starts[1].col];
     }
   }
 	return C;
@@ -71,27 +71,27 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 
   int mid = n/2;
 	int** S[10];
-	int*** input[10];
-	struct Point* start[10];
+	int*** inputs[10];
+	struct Point* starts[10];
 	bool methodIsAdd[10];
 
 	for(int i = 0; i < 10; i++) {
-		// 2 input matrices per addition/subtraction
-		input[i] = malloc(sizeof(int*) * 2);
-		start[i] = malloc(sizeof(struct Point *) * 2);
-		for(int j = 0; j < 2; j++) {
-			input[i][j] = create_array(mid);
-			start[i][j] = malloc(sizeof(struct Point));
-		}
+		starts[i] = malloc(sizeof(struct Point) * 2);
+		inputs[i] = malloc(sizeof(int **) * 2);
 		S[i] = create_array(mid);
 	}
+	starts[0][0].row = 0;
+	starts[0][0].col = mid;
+	inputs[0][0] = B;
+	inputs[0][1] = B;
+	methodIsAdd[0] = false;
 
 
 	for(int i = 0; i < 10; i++) {
 		if(methodIsAdd[i]) {
-			S[i] = matrix_add(input[i][0], input[i][1], start[i][0], start[i][1], mid);
+			S[i] = matrix_add(inputs[i], starts[i], mid);
 		} else {
-			S[i] = matrix_subtract(input[i][0], input[i][1], start[i][0], start[i][1], mid);
+			S[i] = matrix_subtract(inputs[i], starts[i], mid);
 		}
 	}
 	
