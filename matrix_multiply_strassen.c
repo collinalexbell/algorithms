@@ -94,6 +94,12 @@ int** matrix_multiply(int** A, int** B, struct Point startA, struct Point startB
 			S[i] = matrix_subtract(inputs[i], starts[i], mid);
 		}
 	}
+
+	for(int i = 0; i < 10; i++) {
+		free(starts[i]);
+		free(inputs[i]);
+		destroy_array(S[i]);
+	}
 	
 	return C;
 }
