@@ -1056,10 +1056,12 @@ Solve the recurrance for T(n)=2T(floor(n/2)) + n
 - Assume bound holds for all positive m < n, in particular m=floor(n/2)
 - Substitute into guessed solution: T(floor(n/2))<=c*floor(n/2)lg(floor(n/2))
 - Substitute into reccurence:
-- - T(n) <= 2(c*floor(n/2)lg(floor(n/2))) + n
-- -      <= cnlg(n/2)+n
-- -       = cnlgn - cnlg2 + n
-- -       = cnlgn - cn + n  
+-  ```
+T(n) <= 2(c*floor(n/2)lg(floor(n/2))) + n
+     <= cnlg(n/2)+n
+      = cnlgn - cnlg2 + n
+      = cnlgn - cn + n  
+```
 
 Now the base case must be proven
 - T(1) = 1
