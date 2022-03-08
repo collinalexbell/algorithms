@@ -1060,8 +1060,7 @@ Solve the recurrance for T(n)=2T(floor(n/2)) + n
 T(n) <= 2(c*floor(n/2)lg(floor(n/2))) + n
      <= cnlg(n/2)+n
       = cnlgn - cnlg2 + n
-      = cnlgn - cn + n  
-```
+      = cnlgn - cn + n ```
 
 Now the base case must be proven
 - T(1) = 1
