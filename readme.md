@@ -1039,3 +1039,48 @@ struct SubArray max_subarray(int *A,  int len) {
         return max;
 }
 ```
+
+# Change, this is where I'm going to take notes and do problems
+
+## 4.3: The substitution method for solving recurrences
+
+### The substitution method:
+1. Guess the form of the solution
+2. Use mathematical induction to find the constants and show that the solution works
+
+#### Example
+
+Solve the recurrance for T(n)=2T(floor(n/2)) + n
+- Guess solution of T(n)=O(nlgn)
+- Prove T(n) <= cnlgn for some c > 0.
+- Assume bound holds for all positive m < n, in particular m=floor(n/2)
+- Substitute into guessed solution: T(floor(n/2))<=c*floor(n/2)lg(floor(n/2))
+- Substitute into reccurence:
+- - T(n) <= 2(c*floor(n/2)lg(floor(n/2))) + n
+- -      <= cnlg(n/2)+n
+- -       = cnlgn - cnlg2 + n
+- -       = cnlgn - cn + n  
+
+Now the base case must be proven
+- T(1) = 1
+- T(2) = 2T(1)+1 = 3
+- T(3) = 2T(floor(3/2))+1 = 2T(1)+1 = 3
+
+T(2) = 3 < c*2*lg(2)
+T(3) = 3 < c*3*lg(3)
+
+So with n0 of 2, any c>=2 will suffice
+
+##### Caveats
+Note, the following tripped me up
+<= 2(c*floor(n/2)lg(floor(n/2))) + n
+<= cnlg(n/2)+n
+
+This works because
+2(c*floor(n/2)lg(floor(n/2))) + n <= cnlg(n/2)+n
+
+Floors are always less than or equal to their non floored version and the greater than side of an equation can increase and the inequality will still hold.
+
+
+Note, lg2 = 1, because in discussion of algorithms, the lg is base 2 (the Intro of the book talks about this as Cormen so aptly put [in this quora](https://qr.ae/pGdza4)
+
