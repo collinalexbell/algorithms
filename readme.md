@@ -1070,6 +1070,7 @@ Now the base case must be proven
 - T(3) = 2T(floor(3/2))+1 = 2T(1)+1 = 3
 
 T(2) = 3 < c*2*lg(2)
+
 T(3) = 3 < c*3*lg(3)
 
 So with n0 of 2, any c>=2 will suffice
