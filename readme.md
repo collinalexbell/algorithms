@@ -1088,3 +1088,86 @@ Floors are always less than or equal to their non floored version and the greate
 
 Note, lg2 = 1, because in discussion of algorithms, the lg is base 2 (the Intro of the book talks about this as Cormen so aptly put [in this quora](https://qr.ae/pGdza4)
 
+#### Making a good guess
+
+A good guess generally requires experience and creativity, but here are a few heuristics as well:
+
+- Eliminate quibbling constants by jacking n sky high
+- Prove loose upper and lower bounds and then reduce the range of uncertianty
+
+### Subtleties
+
+Sometimes the math won't go through with the substitution method even though the answer is correct. When this happens, it is useful to subtract or add a lower order term to the guess. The equation that is getting substituted into is a specific recurrance, whereas the thing getting substituted is a big O notation with all the lower order terms removed.
+
+ 
+### Avoiding pitfalls
+
+consider the following induction that attempts to prove T(n) = O(n) by guessing that T(n) < cn:
+
+```
+T(n) <= 2(c*floor(n/2)) + n
+     <= cn+n
+      = O(n)
+```
+This is wrong because it hasn't proved that T(n) <= cn. It only proved T(n) <= cn+n
+
+#### Exercises
+
+##### 4.3-1 (In Progress: NOT COMPLETE YET)
+
+Show that the solution of T(n)=T(n-1)+n is O(n^2)
+
+---------------------------------------------------
+
+I guess that T(n) = O(n^2), so T(n) <= cn^2 and we assume this holds for all positive m<n
+
+```
+for m = n-1
+T(n-1) <= c(n-1)^2 since n-1 can be used for n in the T(n) <= cn^2
+
+
+T(n) <= T(n-1)+n
+substitution;
+     <= c(n-1)^2+n
+     <= c(n^2 - 2n + 1) + n
+     <= cn^2 - 2cn + c + n
+
+choosing c=1
+     <= n^2 - 2n + 1 + n
+     <= n^2 - n + 1
+anything less than above is less than n^2 for n >= 1
+(this is the cognative leap I was missing.
+it is similar to the lg(floor(n/2)) -> lg(n/2) leap that (4.19) made 
+     <= n^2
+
+```
+So no proving the base case where n=1
+
+T(1) <= c 1^2
+
+so a c of 1 can be use
+
+and finally the base case n=2
+
+T(2) <= c 2^2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
