@@ -1152,8 +1152,23 @@ and finally the base case n=2
 T(2) <= c 2^2
 
 
+##### 4.3-2
 
+Show that the solution of T(n)=T(roof(n/2))+1 is O(lgn)
 
+```
+We guess O(lgn) ->  T(n) <= clg(n-2) +1
+
+substitution:
+T(n) <= clg(roof(n/2)-2)+1
+     <= clg(n/2 + 1 - 2) + lg(2)
+     <= clg((n-2)/2) + lg(2)
+     <= clg(n-2) - lg(2) + lg(2)
+     <= clg(n-2)	
+
+```
+
+I copied this from the solution, but I am not satisfied with it, because I cant figure out where the -2 comes from in the initial substitition
 
 
 
