@@ -1156,27 +1156,16 @@ T(2) <= c 2^2
 
 Show that the solution of T(n)=T(roof(n/2))+1 is O(lgn)
 
-```
-We guess O(lgn) ->  T(n) <= clg(n-2) +1
-
-substitution:
-T(n) <= clg(roof(n/2)-2)+1
-     <= clg(n/2 + 1 - 2) + lg(2)
-     <= clg((n-2)/2) + lg(2)
-     <= clg(n-2) - lg(2) + lg(2)
-     <= clg(n-2)	
-
-```
-
-I copied this from the solution, but I am not satisfied with it, because I cant figure out where the -2 comes from in the initial substitition
-
 
 ```
 O(lgn) -> T(n) <= clg(n) (+1?)
 
+assume this holds for all m < n
 select m=roof(n/2) and plug in for n
+(we can plug in for in on the right side but not the left
+ because m<n). Inequalities are weird
 
-T(m) <= clg(roof(n/2) (+1?)) + 1
+T(n) <= clg(roof(n/2) (+1?)) + 1
      <= clg(n/2) + 1
      <= c(lg(n)-lg(2)) + 1
      <= clg(n) - c + 1
