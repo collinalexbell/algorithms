@@ -1171,6 +1171,22 @@ T(n) <= clg(roof(n/2)-2)+1
 I copied this from the solution, but I am not satisfied with it, because I cant figure out where the -2 comes from in the initial substitition
 
 
+```
+O(lgn) -> T(n) <= clg(n) (+1?)
+
+select m=roof(n/2) and plug in for n
+
+T(m) <= clg(roof(n/2) (+1?)) + 1
+     <= clg(n/2) + 1
+     <= c(lg(n)-lg(2)) + 1
+     <= clg(n) - c + 1
+
+choosing c of 1
+
+     <= lg(n)
+```
+
+
 
 
 
