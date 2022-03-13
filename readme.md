@@ -1155,39 +1155,69 @@ T(2) <= c 2^2
 ##### 4.3-2
 
 Show that the solution of T(n)=T(roof(n/2))+1 is O(lgn)
+```
+We guess that 
+T(n) <= clg(n-2)
 
+Assume this holds for all m<n
+
+T(roof(n/2))<= clg(roof(n/2)-2)
+
+Substitute into original equation
+
+T(n)        <= clgn(roof(n/2)-2) + 1
+            <= clgn(n/2 + 1 - 2) + 1
+            <= clgn((n-2)/2) + 1
+            <= c(lgn(n-2) - lg(2)) + 1
+            <= c(lgn(n-2) - 1) + 1
+            <= clg(n-2) - c + 1 
+if c > 1    <= clg(n-2)
+```
+
+Base Case
 
 ```
-O(lgn) -> T(n) <= clg(n) (+1?)
+Assume T(1)=1
+Assume T(2)=1
+T(3) = T(roof(3/2))+1
+     = T(2) + 1
+     = 2
 
-assume this holds for all m < n
-select m=roof(n/2) and plug in for n
-(we can plug in for in on the right side but not the left
- because m<n). Inequalities are weird
+T(4) <= clg(2)
+T(4) = T(roof(4/2))+1
+     = T(2) + 1
+     = 2
 
-T(n) <= clg(roof(n/2) (+1?)) + 1
-     <= clg(n/2) + 1
-     <= c(lg(n)-lg(2)) + 1
-     <= clg(n) - c + 1
+T(4) holds for any c>2
 
-choosing c of 1
+T(5) <= clg(2.5)
+T(5) = T(roof(5/2))+1
+     = T(3) + 1
+     = 3
 
-     <= lg(n)
+T(5) holds for any c>=3
 ```
 
+##### 4.3-3
+
+We saw that the solution of T(n) = 2T(floor(n/2))+n is O(nlgn). Show that the solution of this recurrence is also Omega(nlgn).
+
+```
+Assume the solution of: T(n) >= c(n+2)lg(n+2)
+
+T(floor(n/2)) >= c(floor(n/2)+1)lg(floor(n/2)+2)
+
+Substute this into original recurrance
+
+T(n) >= 2c(floor(n/2)+1)lg(floor(n/2)+2) + n
+     >= 2c((n/2+1)lg(floor(n/2)+2) + n
+     >= 2c((n+2)/2)lg((n+2)/2) + n
+     >= c(n+2)lg(n+2) - c(n+2) + n
+
+for n >= 2c/(1-c), 0 < c < 1
 
 
+     >= c(n+2)lg(n+2)
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
- 
+Success: 80%, I nearly got the form of the solution correct. I did not know how to eliminate the -c(n+2)+n and still don't understand how the person who's answer I looked up transformed that to n>=2c/(1-c)
