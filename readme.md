@@ -1221,3 +1221,35 @@ for n >= 2c/(1-c), 0 < c < 1
 ```
 
 Success: 80%, I nearly got the form of the solution correct. I did not know how to eliminate the -c(n+2)+n and still don't understand how the person who's answer I looked up transformed that to n>=2c/(1-c)
+
+## 4.4 Recursion-tree method for solving recurrences
+
+### Exercises
+
+#### 4.4-1
+
+Use a recursion tree to determine a good asymptotic upper bound on the recurrence T(n) = 3T(floor(n/2)) + n. Use substitution methon to verify your answer
+
+```
+---------> lg2(n) levels
+n 3/2n   9/4n 
+| |      |
+   /
+  n/2- 
+ / 
+n-n/2
+ \ 
+  n/2-
+   \
+
+sum(0,lg2(n)-1){(3/2)^i*n}
+
+The leaf level costs (3/2)^lg2(n)+1
+
+
+The upper bound (3/2)^lg2(n)+1*n * lg2(n)+1
+
+I am going to guess nlgn
+
+The solution book says my answer is wrong
+```
