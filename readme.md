@@ -1253,3 +1253,32 @@ I am going to guess nlgn
 
 The solution book says my answer is wrong
 ```
+
+#### 4.4-2
+
+Use a recursion tree to determine a good asympototic upper bound on the recurrence T(n)=T(n/2)+n^2. Use the substitution method to veriy your answer.
+
+lgn levels
+
+n^2 -> (n/2)^2 -> (n/4)^2 -> (n/(i^2))^2 = 2n^2
+
+n + n/2 + n/4 + n/i^2 = 2n 
+
+
+The solution is O(n^2)
+
+
+Substitution method
+
+```
+T(n) <= cn^2
+T(n/2) <= c(n/2)^2
+...
+
+T(n) <= c(n/2)^2 + n^2
+T(n) <= c(n^2/4) + n^2
+The constant factor 1/4 gets absorbed into c, becomming d
+T(n) <= dn^2 + n^2
+The constant actor +1 gets absorbed into d, becomming e
+T(n) <= en^2
+```
