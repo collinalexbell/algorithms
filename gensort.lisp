@@ -1,6 +1,6 @@
 
-(defun main (args)
-  (let (( result (let (
+(defun gensort (args)
+  (let (
                (n 0)
                (r 10000))
            (if (>= (length args) 1)
@@ -10,7 +10,6 @@
                (setf r (nth 1 args)))
            (loop for i from 0 to n collect
              (let ((sign (if (eq (random 2) 1) -1 1)))
-               (format nil "~s" (* (random r) sign)))))))
-    (remove-if (lambda (a) (eq a #\-)) result)))
+               (* (random r) sign)))))
 
 
